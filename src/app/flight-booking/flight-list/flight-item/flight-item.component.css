@@ -3,3 +3,54 @@
   padding: 20px 12px 15px;
   margin-bottom: 15px;
 }
+
+.airline {
+  width: 200px;
+}
+
+.schedule-place-time {
+  width: 300px;
+}
+
+.departure-place-time {
+  width: 90px;
+}
+
+.arrival-place-time {
+  width: 90px;
+}
+
+.time-taken-and-via {
+  width:90px;
+}
+
+.price-and-book {
+  width: 200px;
+}
+
+.time {
+  color: #333;
+  font-weight: bold;
+}
+
+.place {
+  color: #999;
+  font-size: 12px;
+}
+
+.time-taken {
+  color: #333;
+}
+
+.via {
+  color: #999;
+  font-size: 12px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.air-carrier {
+  padding-top: 8px;
+}
