@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightItemComponent implements OnInit {
 
+  disabled = false;
   constructor() { }
 
   ngOnInit() {

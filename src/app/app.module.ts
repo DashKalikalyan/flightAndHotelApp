@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/button';
+import {FormsModule} from '@angular/forms';
+import {CheckboxModule} from 'primeng/checkbox';
 
 import { AppComponent } from './app.component';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
@@ -18,7 +22,11 @@ import { FlightItemComponent } from './flight-booking/flight-list/flight-item/fl
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule
+    ButtonModule,
+    FormsModule,
+    FlexLayoutModule,
+    CheckboxModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

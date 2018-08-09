@@ -1,5 +1,62 @@
 .container {
-  width: 230px;
+  width: 260px;
+  padding: 0 15px;
   background-color: white;
-  height: 500px;
+}
+
+.filter-type-title {
+  padding: 13px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.clear {
+  color: #666;
+  cursor: pointer;
+}
+
+.clear:hover {
+  color: #F34747;
+  text-decoration: underline;
+}
+
+.filter-type-title-name {
+  font-weight: bold;
+  font-size: 0.857em;
+}
+
+.hide-show {
+  color: #c1c1c1;
+  font-size: .714em;
+  cursor: pointer;
+}
+
+.filter-type-content {
+  padding-bottom: 14px;
+}
+
+.filter-type {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.filter-content-name {
+  padding: 3px 0;
+}
+
+p-checkbox ::ng-deep .ui-chkbox-box.ui-state-active {
+  background-color: #F34747;
+  border: 1px solid #F34747;
+
+}
+
+p-checkbox ::ng-deep .ui-chkbox-box.ui-state-focus {
+  box-shadow: 0 0;
+}
+
+p-checkbox ::ng-deep .ui-chkbox-label {
+  font-size: .857em;
+  color: #333;
+  line-height: 18px;
+  margin-left: 10px;
+  cursor: pointer;
 }

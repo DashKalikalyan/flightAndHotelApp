@@ -33,6 +33,6 @@
   </div>
   <div class="price-and-book" fxLayout="row" fxLayoutAlign="space-between none">
     <div class="price">$500</div>
-    <div>Book Now</div>
+    <p-button label="Book Now" (onClick)="disabled = !disabled" [disabled]="disabled"></p-button>
   </div>
 </div>
