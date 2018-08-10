@@ -1,36 +1,11 @@
 <div class="container" fxLayout="column">
-  <div class="filter-type" fxLayout="column">
-    <div class="filter-type-title" fxLayout="row" fxLayoutAlign="space-between none" (click)="showAirlines = !showAirlines">
-      <div class="filter-type-title-name">Airlines</div>
-      <div fxLayout="row" class="hide-show" fxLayoutGap="5px">
-        <div class="clear" *ngIf="selectedAirlines.length !== 0" (click)="selectedAirlines.length = 0; showAirlines = !showAirlines;">CLEAR</div>
-        <div *ngIf="showAirlines">HIDE</div>
-        <div *ngIf="!showAirlines">SHOW</div>
-      </div>
+  <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType"
+                       [filterValues]="filterElement.filterValues"></app-filter-checkbox>
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div>{{rangeValues[0]}}</div>
+      <div>{{rangeValues[1]}}</div>
     </div>
-    <div class="filter-type-content" *ngIf="showAirlines">
-      <div class="filter-content-name" *ngFor="let airline of airlines">
-        <p-checkbox name="airlines" [value]="airline" [label]="airline" [(ngModel)]="selectedAirlines"></p-checkbox>
-      </div>
-    </div>
+    <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="20241" [max]="40342"></p-slider>
   </div>
-
-
-  <div class="filter-type" fxLayout="column">
-    <div class="filter-type-title" fxLayout="row" fxLayoutAlign="space-between none" (click)="showFareTypes = !showFareTypes">
-      <div class="filter-type-title-name">Fare Type</div>
-      <div fxLayout="row" class="hide-show" fxLayoutGap="5px">
-        <div class="clear" *ngIf="selectedFareType.length !== 0" (click)="selectedFareType.length = 0; showFareTypes = !showFareTypes;">CLEAR</div>
-        <div *ngIf="showFareTypes">HIDE</div>
-        <div *ngIf="!showFareTypes">SHOW</div>
-      </div>
-    </div>
-    <div class="filter-type-content" *ngIf="showFareTypes">
-      <div class="filter-content-name" *ngFor="let fareType of fareTypes">
-        <p-checkbox name="airlines" [value]="fareType" [label]="fareType" [(ngModel)]="selectedFareType"></p-checkbox>
-      </div>
-    </div>
-  </div>
-
-
 </div>

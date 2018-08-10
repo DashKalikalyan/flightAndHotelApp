@@ -1,0 +1,28 @@
+.filter-type-title {
+  padding: 13px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.filter-type-title-name {
+  font-weight: bold;
+  font-size: 0.857em;
+}
+
+.clear {
+  color: #666;
+  cursor: pointer;
+}
+
+.clear:hover {
+  color: #F34747;
+  text-decoration: underline;
+}
+
+
+
+.hide-show {
+  color: #c1c1c1;
+  font-size: .714em;
+  cursor: pointer;
+}

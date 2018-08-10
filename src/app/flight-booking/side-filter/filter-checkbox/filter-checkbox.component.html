@@ -1,0 +1,14 @@
+<div class="filter-type" fxLayout="column">
+  <app-filter-type-title [show]="show" (showOrNot)="show = $event" [filterType]="filterType" [selectedfilterValues]="selectedfilterValues"></app-filter-type-title>
+  <div class="filter-type-content" *ngIf="show">
+    <div class="filter-content-name" *ngFor="let filterValue of filterValues; let index = index" [ngClass]="{'filter-content-name-override' : index >= last}">
+      <div *ngIf="index < last">
+        <p-checkbox [name]="filterType" [value]="filterValue" [label]="filterValue" [(ngModel)]="selectedfilterValues"></p-checkbox>
+      </div>
+    </div>
+    <div class="show-more-less" fxLayout="row" fxLayoutAlign="end none" *ngIf="filterValues.length > 8">
+      <div *ngIf="last === 8" (click)="showMore()">View More</div>
+      <div *ngIf="last === filterValues.length" (click)="showLess()">View Less</div>
+    </div>
+  </div>
+</div>

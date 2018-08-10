@@ -1,0 +1,45 @@
+.filter-type-content {
+  padding-bottom: 14px;
+}
+
+.filter-type {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.filter-content-name {
+  padding: 3px 0;
+}
+
+.filter-content-name-override {
+  padding: 0 0;
+}
+
+p-checkbox ::ng-deep .ui-chkbox-box.ui-state-active {
+  background-color: #F34747;
+  border: 1px solid #F34747;
+
+}
+
+p-checkbox ::ng-deep .ui-chkbox-box.ui-state-focus {
+  box-shadow: 0 0;
+}
+
+p-checkbox ::ng-deep .ui-chkbox-label {
+  font-size: .857em;
+  color: #333;
+  line-height: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.show-more-less {
+  color: #c1c1c1;
+  font-size: .714em;
+  cursor: pointer;
+}
+
+.show-more-less:hover {
+  color: #F34747;
+  text-decoration: underline;
+}
+
