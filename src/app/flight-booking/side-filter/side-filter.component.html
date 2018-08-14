@@ -1,11 +1,20 @@
 <div class="container" fxLayout="column">
-  <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType"
-                       [filterValues]="filterElement.filterValues"></app-filter-checkbox>
   <div fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="space-between none">
-      <div>{{rangeValues[0]}}</div>
-      <div>{{rangeValues[1]}}</div>
+    <div class="filter-type-title" fxLayout="row" fxLayoutAlign="space-between none" (click)="show = !show; emitShow();">
+      <div class="filter-type-title-name">PRICE</div>
+      <div class="hide-show" (click)="showPrice = !showPrice">
+        <div *ngIf="showPrice">HIDE</div>
+        <div *ngIf="!showPrice">SHOW</div>
+      </div>
     </div>
-    <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="20241" [max]="40342"></p-slider>
+    <div fxLayout="column" *ngIf="showPrice" style="padding-bottom: 15px;">
+      <div fxLayout="row" fxLayoutAlign="space-between none">
+        <div>{{rangeValues[0]}}</div>
+        <div>{{rangeValues[1]}}</div>
+      </div>
+      <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="minPrice" [max]="maxPrice"></p-slider>
+    </div>
   </div>
+  <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType"
+                       [filterValues]="filterElement.filterValues" [filterMap]="filterElement.filterMap" [filterPriceMap]="filterElement.filterPriceMap"></app-filter-checkbox>
 </div>

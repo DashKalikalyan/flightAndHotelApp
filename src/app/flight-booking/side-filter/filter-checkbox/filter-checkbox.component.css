@@ -43,3 +43,19 @@ p-checkbox ::ng-deep .ui-chkbox-label {
   text-decoration: underline;
 }
 
+p-slider ::ng-deep .ui-slider.ui-slider-handle {
+  background: url("../../../../assets/slidet_background.png");
+  background: white;
+}
+
+.count {
+  color: #999;
+  font-size: 0.857em;
+  padding-top: 3px;
+}
+
+.minimum-price {
+  color: #999;
+  font-size: 0.857em;
+}
+

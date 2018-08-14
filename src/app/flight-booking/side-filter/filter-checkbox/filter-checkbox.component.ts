@@ -10,10 +10,13 @@ export class FilterCheckboxComponent implements OnInit {
   last = 8;
   @Input() filterValues;
   @Input() filterType;
+  @Input() filterMap;
+  @Input() filterPriceMap;
   selectedfilterValues = [];
   constructor() { }
 
   ngOnInit() {
+    console.log(this.filterValues);
   }
 
   showMore() {

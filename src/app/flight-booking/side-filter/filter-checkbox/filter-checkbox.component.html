@@ -1,9 +1,16 @@
 <div class="filter-type" fxLayout="column">
-  <app-filter-type-title [show]="show" (showOrNot)="show = $event" [filterType]="filterType" [selectedfilterValues]="selectedfilterValues"></app-filter-type-title>
+  <app-filter-type-title [show]="show" (showOrNot)="show = $event" [filterType]="filterType"
+                         [selectedfilterValues]="selectedfilterValues"></app-filter-type-title>
   <div class="filter-type-content" *ngIf="show">
-    <div class="filter-content-name" *ngFor="let filterValue of filterValues; let index = index" [ngClass]="{'filter-content-name-override' : index >= last}">
-      <div *ngIf="index < last">
-        <p-checkbox [name]="filterType" [value]="filterValue" [label]="filterValue" [(ngModel)]="selectedfilterValues"></p-checkbox>
+    <div class="filter-content-name" *ngFor="let filterValue of filterValues; let index = index"
+         [ngClass]="{'filter-content-name-override' : index >= last}">
+      <div *ngIf="index < last"  fxLayout="row" fxLayoutAlign="space-between none">
+        <div fxLayout="row" fxLayoutGap="5px">
+          <p-checkbox [name]="filterType" [value]="filterValue" [label]="filterValue"
+                      [(ngModel)]="selectedfilterValues"></p-checkbox>
+          <div class="count">{{filterMap.get(filterValue)}}</div>
+        </div>
+        <div class="minimum-price">{{filterPriceMap.get(filterValue)}}</div>
       </div>
     </div>
     <div class="show-more-less" fxLayout="row" fxLayoutAlign="end none" *ngIf="filterValues.length > 8">

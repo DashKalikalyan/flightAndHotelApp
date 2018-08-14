@@ -1,15 +1,22 @@
 .container {
-  background-color: white;
   padding: 20px 12px 15px;
+}
+
+.outer-container {
+  background-color: white;
   margin-bottom: 15px;
+}
+.outer-container:hover {
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
 }
 
 .airline {
-  width: 200px;
+  width: 180px;
 }
 
 .schedule-place-time {
-  width: 300px;
+  width: 330px;
+  cursor: pointer;
 }
 
 .departure-place-time {
@@ -21,7 +28,7 @@
 }
 
 .time-taken-and-via {
-  width:90px;
+  width:120px;
 }
 
 .price-and-book {
@@ -50,10 +57,22 @@
 .price {
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 }
+
+.show-div {
+  display: none;
+}
+
+/*.price:hover .show-div {*/
+  /*display: block;*/
+  /*position: absolute;*/
+  /*background-color: #eeeeee;*/
+/*}*/
 
 .air-carrier {
   padding-top: 8px;
+  cursor: auto;
 }
 
 p-button ::ng-deep .ui-button {
@@ -77,4 +96,83 @@ p-button ::ng-deep .ui-button:disabled {
   color: #999;
   border: 1px solid #E2E2E2;
   background-color: #E2E2E2;
+}
+
+.flight-inclusion {
+  padding: 3px;
+  border-radius: 3px;
+  background: #f2f2f2;
+  color: #999;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.flight-inclusion-selected {
+  background-color: #EA2330;
+  color: white;
+}
+
+.flight-inclusion:hover {
+  background-color: #EA2330;
+  color: white;
+}
+
+.convenience {
+  color: #999;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.convenience-present-or-not {
+  color: #333;
+}
+
+.flight-details-refundable-or-not {
+  cursor:pointer;
+  color: #333;
+}
+
+.flight-details-refundable-or-not:hover {
+  text-decoration: underline;
+  color: #EA2330;
+}
+
+.vertical-line {
+  border:1px solid #a2a2a2;
+
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

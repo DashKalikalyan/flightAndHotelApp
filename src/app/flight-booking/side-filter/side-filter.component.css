@@ -11,3 +11,21 @@ p-slider ::ng-deep .ui-slider-range {
 p-slider ::ng-deep .ui-slider-horizontal {
   height: 4px;
 }
+
+.filter-type-title {
+  padding: 13px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.filter-type-title-name {
+  font-weight: bold;
+  font-size: 0.857em;
+}
+
+
+.hide-show {
+  color: #c1c1c1;
+  font-size: .714em;
+  cursor: pointer;
+}

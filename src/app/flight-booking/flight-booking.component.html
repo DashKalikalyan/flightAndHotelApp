@@ -1,4 +1,7 @@
-<div class="container" fxLayout="row" fxLayoutGap="15px">
-  <app-side-filter></app-side-filter>
-  <app-flight-list></app-flight-list>
+<div class="container" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="center none">
+  <app-side-filter [carriers]="carriers" [carriersMap]="carriersMap" [carriersMapPrice]="carriersMapPrice"
+                   [alliances]="alliances" [alliancesMap]="alliancesMap" [fareTypes]="fareTypes"
+                   [fareTypesMap]="fareTypesMap" [maxPrice]="maxPrice" [minPrice]="minPrice" [noOfStops]="noOfStops"
+                   [noOfStopsMap]="noOfStopsMap" [alliancesMapPrice]="alliancesMapPrice" [fareTypesMapPrice]="fareTypesMapPrice" [noOfStopsMapPrice]="noOfStopsMapPrice"></app-side-filter>
+  <app-flight-list [flights]="flights"></app-flight-list>
 </div>
