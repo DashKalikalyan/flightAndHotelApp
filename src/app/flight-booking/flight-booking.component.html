@@ -2,6 +2,7 @@
   <app-side-filter [carriers]="carriers" [carriersMap]="carriersMap" [carriersMapPrice]="carriersMapPrice"
                    [alliances]="alliances" [alliancesMap]="alliancesMap" [fareTypes]="fareTypes"
                    [fareTypesMap]="fareTypesMap" [maxPrice]="maxPrice" [minPrice]="minPrice" [noOfStops]="noOfStops"
-                   [noOfStopsMap]="noOfStopsMap" [alliancesMapPrice]="alliancesMapPrice" [fareTypesMapPrice]="fareTypesMapPrice" [noOfStopsMapPrice]="noOfStopsMapPrice"></app-side-filter>
-  <app-flight-list [flights]="flights"></app-flight-list>
+                   [noOfStopsMap]="noOfStopsMap" [alliancesMapPrice]="alliancesMapPrice" [fareTypesMapPrice]="fareTypesMapPrice" [noOfStopsMapPrice]="noOfStopsMapPrice"
+                    (emitSelectedfilterValues)="filter($event)"></app-side-filter>
+  <app-flight-list [filteredFlights]="filteredFlights"></app-flight-list>
 </div>

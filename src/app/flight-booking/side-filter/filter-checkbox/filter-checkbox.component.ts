@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-filter-checkbox',
@@ -13,6 +13,7 @@ export class FilterCheckboxComponent implements OnInit {
   @Input() filterMap;
   @Input() filterPriceMap;
   selectedfilterValues = [];
+  @Output() emitSelectedfilterValues: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -25,6 +26,16 @@ export class FilterCheckboxComponent implements OnInit {
 
   showLess() {
     this.last = 8;
+  }
+
+  filterByThisOnly(filterValue) {
+    this.selectedfilterValues = [];
+    this.selectedfilterValues.push(filterValue);
+    this.filter();
+  }
+
+  filter() {
+    this.emitSelectedfilterValues.emit({filterType: this.filterType, selectedfilterValues: this.selectedfilterValues});
   }
 
 }

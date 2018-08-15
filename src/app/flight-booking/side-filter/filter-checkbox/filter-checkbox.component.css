@@ -8,10 +8,25 @@
 
 .filter-content-name {
   padding: 3px 0;
+  cursor: pointer;
 }
 
 .filter-content-name-override {
   padding: 0 0;
+}
+
+.filter-content-name:hover ::ng-deep .only{
+  visibility: visible;
+}
+
+.only {
+  visibility: hidden;
+  font-size: 11px;
+  color: #4ea5df;
+}
+
+.only:hover {
+  color: #F34747;
 }
 
 p-checkbox ::ng-deep .ui-chkbox-box.ui-state-active {
@@ -57,5 +72,6 @@ p-slider ::ng-deep .ui-slider.ui-slider-handle {
 .minimum-price {
   color: #999;
   font-size: 0.857em;
+  cursor: auto;
 }
 

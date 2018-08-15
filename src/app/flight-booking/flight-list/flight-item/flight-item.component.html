@@ -25,7 +25,7 @@
       </div>
       <div class="time-taken-and-via" fxLayout="column" fxLayoutGap="2px">
         <div class="time-taken">
-          {{ (flight.arriveAt - flight.departureTime)}}
+          {{ timeConversion(flight.arriveAt - flight.departureTime)}}
         </div>
         <div class="via">
           {{flight.via.length}} Stop(s), via {{flight.via[0]}}

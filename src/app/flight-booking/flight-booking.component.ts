@@ -12,7 +12,7 @@ export class FlightBookingComponent implements OnInit {
     'to': 'New Delhi',
     'toCode': 'DEL',
     'departureTime': 1540461600,
-    'arriveAt': 1543140000,
+    'arriveAt': 1593140000,
     'via': [ 'london'],
     'viaCode': ['CDG'],
     'arrivesAtVia': [1543147200],
@@ -250,6 +250,7 @@ export class FlightBookingComponent implements OnInit {
   carriers = [];
   alliances = [];
   fareTypes = [];
+  layOvers = [];
   minPrice: number;
   maxPrice: number;
   noOfStops: number[];
@@ -261,19 +262,80 @@ export class FlightBookingComponent implements OnInit {
   fareTypesMapPrice = new Map<string, number>();
   noOfStopsMap = new Map<number, number>();
   noOfStopsMapPrice = new Map<number, number>();
-  maximumPrice: number;
+  layOversMap = new Map<string, number>();
+  layOversMapPrice = new Map<number, number>();
+  vias = [];
+  filterObject = {Airlines: [], };
+  filteredFlights = [];
   constructor() { }
 
   ngOnInit() {
+    this.filteredFlights = this.flights;
+
+    this.minPrice = Math.min(... this.flights.map((flight) => {
+      return flight.price;
+    }));
+    this.maxPrice = Math.max(... this.flights.map((flight) => {
+      return flight.price;
+    }));
+
+    this.getAllCarriersAndMinimumPriceOfEach();
+    this.getAllAlliancesAndMinimumPriceOfEach();
+    this.getAllFaretypesAndMinimumPriceOfEach();
+    this.getAllNoOfStopsAndMinimumPriceOfEach();
+
+
+
+
+
+
+
+
+    // this.flights.forEach((flight) => {
+    //   flight.via.forEach((layOver) => {
+    //     this.vias.push(layOver);
+    //   });
+    // });
+    //
+    // this.layOvers = Array.from(new Set(this.vias));
+    //
+    // this.layOvers.forEach((layOver) => {
+    //   this.layOversMap.set(layOver, 0);
+    //   this.layOversMapPrice.set(layOver, this.maxPrice);
+    // });
+    //
+    // this.vias.forEach((via) => {
+    //   this.layOversMap.set(via, this.layOversMap.get(via) + 1);
+    // });
+
+    // this.flights.forEach((flight) => {
+    //   if (flight.price < this.noOfStopsMapPrice.get(flight.via.length)) {
+    //     this.noOfStopsMapPrice.set(flight.via.length, flight.price);
+    //   }
+    // });
+
+
+    // this.alliances.forEach((alliance) => {
+    //   this.alliancesMap.set(alliance, 0);
+    //   this.alliancesMapPrice.set(alliance, this.maxPrice);
+    // });
+    // this.flights.forEach((flight) => {
+    //   this.alliancesMap.set(flight.alliance, this.alliancesMap.get(flight.alliance) + 1);
+    // });
+    // this.flights.forEach((flight) => {
+    //   if (flight.price < this.alliancesMapPrice.get(flight.alliance)) {
+    //     this.alliancesMapPrice.set(flight.alliance, flight.price);
+    //   }
+    // });
+  }
+
+  getAllCarriersAndMinimumPriceOfEach() {
     this.carriers = Array.from(new Set(this.flights.map((flight) => {
       return flight.carrier;
     })));
-    this.maximumPrice = Math.max(...Array.from(new Set(this.flights.map((flight) => {
-      return flight.price;
-    }))));
     this.carriers.forEach((carrier) => {
       this.carriersMap.set(carrier, 0);
-      this.carriersMapPrice.set(carrier, this.maximumPrice);
+      this.carriersMapPrice.set(carrier, this.maxPrice);
     });
     this.flights.forEach((flight) => {
       this.carriersMap.set(flight.carrier, this.carriersMap.get(flight.carrier) + 1);
@@ -283,16 +345,15 @@ export class FlightBookingComponent implements OnInit {
         this.carriersMapPrice.set(flight.carrier, flight.price);
       }
     });
-    console.log(this.carriersMap);
+  }
 
-
-
+  getAllAlliancesAndMinimumPriceOfEach() {
     this.alliances = Array.from(new Set(this.flights.map((flight) => {
       return flight.alliance;
     })));
     this.alliances.forEach((alliance) => {
       this.alliancesMap.set(alliance, 0);
-      this.alliancesMapPrice.set(alliance, this.maximumPrice);
+      this.alliancesMapPrice.set(alliance, this.maxPrice);
     });
     this.flights.forEach((flight) => {
       this.alliancesMap.set(flight.alliance, this.alliancesMap.get(flight.alliance) + 1);
@@ -302,15 +363,15 @@ export class FlightBookingComponent implements OnInit {
         this.alliancesMapPrice.set(flight.alliance, flight.price);
       }
     });
-    console.log(this.alliancesMap);
+  }
 
-
+  getAllFaretypesAndMinimumPriceOfEach() {
     this.fareTypes = Array.from(new Set(this.flights.map((flight) => {
       return flight.fareType;
     })));
     this.fareTypes.forEach((fareType) => {
       this.fareTypesMap.set(fareType, 0);
-      this.fareTypesMapPrice.set(fareType, this.maximumPrice);
+      this.fareTypesMapPrice.set(fareType, this.maxPrice);
     });
     this.flights.forEach((flight) => {
       this.fareTypesMap.set(flight.fareType, this.fareTypesMap.get(flight.fareType) + 1);
@@ -320,23 +381,15 @@ export class FlightBookingComponent implements OnInit {
         this.fareTypesMapPrice.set(flight.fareType, flight.price);
       }
     });
-    console.log(this.fareTypesMap);
+  }
 
-
-
-    this.minPrice = Math.min(... this.flights.map((flight) => {
-      return flight.price;
-    }));
-    this.maxPrice = Math.max(... this.flights.map((flight) => {
-      return flight.price;
-    }));
-
+  getAllNoOfStopsAndMinimumPriceOfEach() {
     this.noOfStops = Array.from(new Set(this.flights.map((flight) => {
       return flight.via.length;
     })));
     this.noOfStops.forEach((noOfStop) => {
       this.noOfStopsMap.set(noOfStop, 0);
-      this.noOfStopsMapPrice.set(noOfStop, this.maximumPrice);
+      this.noOfStopsMapPrice.set(noOfStop, this.maxPrice);
     });
     this.flights.forEach((flight) => {
       this.noOfStopsMap.set(flight.via.length, this.noOfStopsMap.get(flight.via.length) + 1);
@@ -346,17 +399,20 @@ export class FlightBookingComponent implements OnInit {
         this.noOfStopsMapPrice.set(flight.via.length, flight.price);
       }
     });
-
-
-
-    console.log(this.carriersMap);
-    console.log(this.carriersMapPrice);
-    console.log(this.fareTypesMap);
-    console.log(this.fareTypesMapPrice);
-    console.log(this.alliancesMap);
-    console.log(this.alliancesMapPrice);
-    console.log(this.noOfStopsMap);
-    console.log(this.noOfStopsMapPrice);
   }
 
+  filter(selectedfilterValues) {
+    this.filterObject[selectedfilterValues.filterType] = selectedfilterValues.selectedfilterValues;
+    console.log(this.filterObject);
+    this.filterByFilterObject();
+  }
+
+  filterByFilterObject() {
+    this.filteredFlights = this.flights.filter((flight) => {
+      for (const property in this.filterObject) {
+        if (this.filterObject[property].includes(flight[property])) {
+          return true;
+        }
+    }});
+  }
 }

@@ -7,10 +7,13 @@
       <div *ngIf="index < last"  fxLayout="row" fxLayoutAlign="space-between none">
         <div fxLayout="row" fxLayoutGap="5px">
           <p-checkbox [name]="filterType" [value]="filterValue" [label]="filterValue"
-                      [(ngModel)]="selectedfilterValues"></p-checkbox>
+                      [(ngModel)]="selectedfilterValues" (onChange)="filter()"></p-checkbox>
           <div class="count">{{filterMap.get(filterValue)}}</div>
         </div>
-        <div class="minimum-price">{{filterPriceMap.get(filterValue)}}</div>
+        <div fxLayout="row" fxLayoutGap="5px">
+          <div class="only" (click)="filterByThisOnly(filterValue)">Only</div>
+          <div class="minimum-price">${{filterPriceMap.get(filterValue)}}</div>
+        </div>
       </div>
     </div>
     <div class="show-more-less" fxLayout="row" fxLayoutAlign="end none" *ngIf="filterValues.length > 8">

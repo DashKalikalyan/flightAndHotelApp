@@ -10,12 +10,20 @@ export class FlightItemComponent implements OnInit {
   @Input() flight;
   disabled = false;
   selected = true;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   presentOrNot(convenience) {
     return this.flight.convenienceAvailable.hasOwnProperty(convenience);
+  }
+
+  timeConversion(millisec) {
+    const hours = (millisec / 3600000).toFixed(0);
+    const minutes = ((millisec % 3600000) / 60000).toFixed(0);
+    return hours + ' h ' + minutes + ' m';
   }
 }
