@@ -46,7 +46,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'sky'
-  },{
+  }, {
     'from': 'New York',
     'fromCode': 'JFK',
     'to': 'New Delhi',
@@ -106,7 +106,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'sky'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
@@ -126,7 +126,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'one world'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
@@ -146,7 +146,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'one world'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
@@ -166,7 +166,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'sky'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
@@ -206,17 +206,17 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'partially-refundable',
     'alliance': 'one world'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
     'toCode': 'DEL',
     'departureTime': 1540461600,
     'arriveAt': 1543140000,
-    'via': [ 'london'],
-    'viaCode': ['LHR'],
-    'arrivesAtVia': [1543147200],
-    'leavesVia': [1543148800],
+    'via': [ 'london', 'paris'],
+    'viaCode': ['LHR', 'CDG'],
+    'arrivesAtVia': [1543147200, 1543147200],
+    'leavesVia': [1543148800, 1543147200],
     'price': 500,
     'carrier': 'Air India',
     'convenienceAvailable': {'internet': '25Mbps',
@@ -226,7 +226,7 @@ export class FlightBookingComponent implements OnInit {
     'aircraft': 'A325',
     'fareType': 'Non-refundable',
     'alliance': 'one world'
-  },{
+  }, {
     'from': 'San Francisco',
     'fromCode': 'SFO',
     'to': 'New Delhi',
@@ -265,8 +265,9 @@ export class FlightBookingComponent implements OnInit {
   layOversMap = new Map<string, number>();
   layOversMapPrice = new Map<number, number>();
   vias = [];
-  filterObject = {Airlines: [], };
+  filterObject = {};
   filteredFlights = [];
+  filterBy = [];
   constructor() { }
 
   ngOnInit() {
@@ -402,17 +403,35 @@ export class FlightBookingComponent implements OnInit {
   }
 
   filter(selectedfilterValues) {
+    console.log(selectedfilterValues);
     this.filterObject[selectedfilterValues.filterType] = selectedfilterValues.selectedfilterValues;
     console.log(this.filterObject);
     this.filterByFilterObject();
   }
 
   filterByFilterObject() {
-    this.filteredFlights = this.flights.filter((flight) => {
-      for (const property in this.filterObject) {
-        if (this.filterObject[property].includes(flight[property])) {
-          return true;
+      this.filteredFlights = this.flights.filter((flight) => {
+        if (this.filterObject['carrier']
+          && this.filterObject['carrier'].length > 0
+          && (! this.filterObject['carrier'].includes(flight.carrier))) {
+          return;
         }
-    }});
+        if (this.filterObject['fareType']
+          && this.filterObject['fareType'].length > 0
+          && (! this.filterObject['fareType'].includes(flight.fareType))) {
+          return;
+        }
+        if (this.filterObject['alliance']
+          && this.filterObject['alliance'].length > 0
+          && (! this.filterObject['alliance'].includes(flight.alliance))) {
+          return;
+        }
+        if (this.filterObject['stops']
+          && this.filterObject['stops'].length > 0
+          && (! this.filterObject['stops'].includes(flight.via.length))) {
+          return;
+        }
+        return flight;
+      });
   }
 }
