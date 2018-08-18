@@ -74,9 +74,11 @@
     <div style="width:235px; font-size: 12px; color: #333; padding: 13px 5px;" fxLayout="row-reverse" fxLayoutGap="5px">
       <div class="flight-details-refundable-or-not">e-cash</div>
       <div class="vertical-line"></div>
-      <div class="flight-details-refundable-or-not">Flight Details</div>
+      <div class="flight-details-refundable-or-not" (click)="showDetails = !showDetails">Flight Details</div>
       <div class="vertical-line"></div>
       <div class="flight-details-refundable-or-not">{{flight.fareType}}</div>
     </div>
   </div>
+  <app-flight-details *ngIf="showDetails" (closeEmitter)="showDetails = !showDetails"></app-flight-details>
 </div>
+

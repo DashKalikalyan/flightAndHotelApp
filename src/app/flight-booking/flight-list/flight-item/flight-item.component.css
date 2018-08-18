@@ -78,7 +78,6 @@
 p-button ::ng-deep .ui-button {
   width: 115px;
   height: 36px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 p-button ::ng-deep .ui-button:enabled {

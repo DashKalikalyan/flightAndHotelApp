@@ -1,0 +1,31 @@
+p-button ::ng-deep .ui-button:enabled {
+  border: 1px solid white;
+  background-color: white;
+  color: black;
+}
+
+p-button ::ng-deep .ui-button:enabled:hover {
+  background-color: #EA2330;
+  border: 1px solid #EA2330;
+}
+
+.active-page ::ng-deep .ui-button:enabled {
+  background-color: #EA2330;
+  border: 1px solid #EA2330;
+  pointer-events: none;
+  color: white;
+}
+
+.is-first-page ::ng-deep .ui-button:enabled {
+  pointer-events: none;
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+.is-last-page ::ng-deep .ui-button:enabled {
+  pointer-events: none;
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+

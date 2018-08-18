@@ -1,0 +1,25 @@
+.header {
+  border-top: 1px solid #cdcecf;
+  border-bottom: 1px solid #cdcecf;
+  padding: 15px 20px;
+  font-size: 20px;
+  color: #666;
+}
+
+.container {
+  padding: 15px 20px;
+}
+
+.from-to {
+  font-weight: bold;
+  color: #333;
+  font-size: 20px;
+}
+
+.date {
+  color: #666;
+  font-size: 14px;
+}
+.cancel {
+  cursor: pointer;
+}

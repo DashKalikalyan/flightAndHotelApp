@@ -17,7 +17,7 @@ export class FlightBookingComponent implements OnInit {
     'viaCode': ['CDG'],
     'arrivesAtVia': [1543147200],
     'leavesVia': [1543148800],
-    'price': 500,
+    'price': 600,
     'carrier': 'Air India',
     'convenienceAvailable': {'internet': '25Mbps',
       'aircraft': 'Airbus A325',
@@ -117,7 +117,7 @@ export class FlightBookingComponent implements OnInit {
     'viaCode': ['IST'],
     'arrivesAtVia': [1543147200],
     'leavesVia': [1543148800],
-    'price': 530,
+    'price': 539,
     'carrier': 'Turkish Airlines',
     'convenienceAvailable': {'internet': '25Mbps',
       'aircraft': 'Airbus A325',
@@ -197,7 +197,7 @@ export class FlightBookingComponent implements OnInit {
     'viaCode': ['BCN'],
     'arrivesAtVia': [1543147200],
     'leavesVia': [1543148800],
-    'price': 500,
+    'price': 439,
     'carrier': 'Air India',
     'convenienceAvailable': {'internet': '25Mbps',
       'aircraft': 'Airbus A325',
@@ -217,7 +217,7 @@ export class FlightBookingComponent implements OnInit {
     'viaCode': ['LHR', 'CDG'],
     'arrivesAtVia': [1543147200, 1543147200],
     'leavesVia': [1543148800, 1543147200],
-    'price': 500,
+    'price': 583,
     'carrier': 'Air India',
     'convenienceAvailable': {'internet': '25Mbps',
       'aircraft': 'Airbus A325',
@@ -237,7 +237,7 @@ export class FlightBookingComponent implements OnInit {
     'viaCode': ['LHR'],
     'arrivesAtVia': [1543147200],
     'leavesVia': [1543148800],
-    'price': 500,
+    'price': 576,
     'carrier': 'Air India',
     'convenienceAvailable': {'internet': '25Mbps',
       'aircraft': 'Airbus A325',
@@ -267,12 +267,17 @@ export class FlightBookingComponent implements OnInit {
   vias = [];
   filterObject = {};
   filteredFlights = [];
+  filteredFlightsPerPage = [];
+  currentPage = 1;
+  perPage = 2;
+  pagesToShow = 2;
   filterBy = [];
   constructor() { }
 
   ngOnInit() {
     this.filteredFlights = this.flights;
-
+    this.sortFlights();
+    this.setCurrentPage();
     this.minPrice = Math.min(... this.flights.map((flight) => {
       return flight.price;
     }));
@@ -402,6 +407,14 @@ export class FlightBookingComponent implements OnInit {
     });
   }
 
+  // getAllLayoversAndMinimumPriceOfEach() {
+  //   this.layOvers = Array.from(new Set(this.flights.map((flight) => {
+  //       flight.via.forEach((el) => {
+  //         return el;
+  //       });
+  //   })));
+  // }
+
   filter(selectedfilterValues) {
     console.log(selectedfilterValues);
     this.filterObject[selectedfilterValues.filterType] = selectedfilterValues.selectedfilterValues;
@@ -431,7 +444,46 @@ export class FlightBookingComponent implements OnInit {
           && (! this.filterObject['stops'].includes(flight.via.length))) {
           return;
         }
+        if (this.filterObject['price']
+          && this.filterObject['price'].length > 0
+          && ( flight.price < this.filterObject['price'][0] || flight.price > this.filterObject['price'][1])) {
+          return;
+        }
         return flight;
       });
+      this.currentPage = 1;
+      this.setCurrentPage();
+      console.log(this.filteredFlights.length);
+  }
+
+  sortFlights() {
+    this.filteredFlights.sort((first, second) => {
+      return first.price - second.price;
+    });
+  }
+
+  goPrev() {
+    --this.currentPage;
+    this.setCurrentPage();
+  }
+
+  goNext() {
+    ++this.currentPage;
+    this.setCurrentPage();
+  }
+
+  goToPage(n) {
+    if (n === '...') {
+      ++ this.currentPage;
+      this.setCurrentPage();
+    } else {
+      this.currentPage = n;
+      this.setCurrentPage();
+      console.log(n);
+    }
+  }
+
+  setCurrentPage() {
+    this.filteredFlightsPerPage = this.filteredFlights.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 }

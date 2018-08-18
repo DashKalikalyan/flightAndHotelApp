@@ -1,3 +1,7 @@
 <div class="container">
   <app-flight-item *ngFor="let flight of filteredFlights" [flight]="flight"></app-flight-item>
+  <app-pagination (goNextEmit)="goNext()" (goPrevEmit)="goPrev()" (goToPageEmit)="goToPage($event)"
+                  [currentPage]="currentPage" [pagesToShow]="pagesToShow" [perPage]="perPage" [totalRecords]="totalRecords"></app-pagination>
 </div>
+
+

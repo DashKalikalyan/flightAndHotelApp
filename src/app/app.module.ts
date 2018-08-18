@@ -14,6 +14,8 @@ import { FlightItemComponent } from './flight-booking/flight-list/flight-item/fl
 import { FilterCheckboxComponent } from './flight-booking/side-filter/filter-checkbox/filter-checkbox.component';
 import { FilterTypeTitleComponent } from './flight-booking/side-filter/filter-type-title/filter-type-title.component';
 import {SliderModule} from 'primeng/slider';
+import { PaginationComponent } from './flight-booking/flight-list/pagination/pagination.component';
+import { FlightDetailsComponent } from './flight-booking/flight-list/flight-item/flight-details/flight-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import {SliderModule} from 'primeng/slider';
     FlightItemComponent,
     FilterCheckboxComponent,
     FilterTypeTitleComponent,
+    PaginationComponent,
+    FlightDetailsComponent,
   ],
   imports: [
     BrowserModule,

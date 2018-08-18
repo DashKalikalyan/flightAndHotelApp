@@ -21,12 +21,14 @@ export class SideFilterComponent implements OnInit {
   @Input() fareTypesMapPrice;
   @Input() noOfStopsMapPrice;
   @Output() emitSelectedfilterValues: EventEmitter<any> = new EventEmitter();
+  @Output() handlePriceChangeEmitter: EventEmitter<any> = new EventEmitter();
+
   lowerLimit: number;
   higherLimit: number;
   val = [50, 60];
   val1 = 30;
   showPrice = true;
-  rangeValues: number[];
+  @Output() rangeValues: number[];
   layovers: string[] = [
     'Shanghai - Pudong (PVG)',
     'Singapore (SIN)',
@@ -119,6 +121,10 @@ export class SideFilterComponent implements OnInit {
 
   filter(selectedfilterValues) {
     this.emitSelectedfilterValues.emit(selectedfilterValues);
+  }
+
+  handlePriceChange() {
+    this.handlePriceChangeEmitter.emit({filterType: 'price', selectedfilterValues: this.rangeValues});
   }
 
 }

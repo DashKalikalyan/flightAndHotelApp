@@ -10,6 +10,7 @@ export class FlightItemComponent implements OnInit {
   @Input() flight;
   disabled = false;
   selected = true;
+  showDetails = false;
 
   constructor() {
   }
