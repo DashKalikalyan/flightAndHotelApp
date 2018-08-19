@@ -1,0 +1,36 @@
+.itinerary-container {
+  padding: 20px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.flight-and-aircraft {
+  padding: 5px 15px 5px 0;
+  border-right: 1px solid #cdcecf;
+}
+
+.from-place-time {
+  padding: 5px 15px;
+}
+
+.other {
+  padding: 5px 0;
+}
+
+.to-place-time {
+  padding: 5px 0 5px 15px;
+}
+
+.airline-name {
+  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.operated-by {
+  color: #666;
+  font-size: 10px;
+}
+
+.round ::ng-deep .fa {
+  color: #bebebe;
+}

@@ -4,6 +4,7 @@
   padding: 15px 20px;
   font-size: 20px;
   color: #666;
+  background-color: #F9F9F9;
 }
 
 .container {
@@ -13,7 +14,7 @@
 .from-to {
   font-weight: bold;
   color: #333;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .date {
@@ -21,5 +22,45 @@
   font-size: 14px;
 }
 .cancel {
+  cursor: pointer;
+}
+
+.content-type {
+  padding: 10px 20px;
+  font-size: 12px;
+}
+
+.space {
+  height: 5px;
+  background-color: white;
+}
+
+.content-type-container-1:hover ::ng-deep .space{
+  background-color: red;
+}
+
+.content-type-container-2:hover ::ng-deep .space{
+  background-color: red;
+}
+
+.content-type-container-3:hover ::ng-deep .space{
+  background-color: red;
+}
+
+.content-type-container-1 {
+  border-top: 1px solid #e2e2e2;
+  cursor: pointer;
+}
+
+.content-type-container-2 {
+  border-top: 1px solid #e2e2e2;
+  border-left: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+  cursor: pointer;
+}
+
+.content-type-container-3 {
+  border-top: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
   cursor: pointer;
 }
