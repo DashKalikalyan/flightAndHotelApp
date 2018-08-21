@@ -28,7 +28,7 @@
           {{ timeConversion(flight.arriveAt - flight.departureTime)}}
         </div>
         <div class="via">
-          {{flight.via.length}} Stop(s), via {{flight.via[0]}}
+          {{flight.layOverDetails.length}} Stop(s), via {{flight.layOverDetails[0].via}}
         </div>
       </div>
     </div>
@@ -41,44 +41,45 @@
   <div style="padding: 5px 10px; border-top: 1px solid #e4e4e4;" fxLayout="row">
     <div style="width:230px;" fxLayout="column">
       <div style="font-size: 11px;">Flight Inclusions</div>
-      <div style="padding: 4px 0;" fxLayout="row">
-        <div class="flight-inclusion" [ngClass]="{'flight-inclusion-selected': selected}">
-          {{flight.fromCode}}-{{flight.viaCode}}
-        </div>
-        <div style="padding: 3px; color: #999; font-size: 10px">
-          -
-        </div>
-        <div class="flight-inclusion">
-          {{flight.viaCode}}-{{flight.toCode}}
+      <div fxLayout="row">
+        <div style="padding: 4px 0;" *ngFor="let el of flightInclusion; let i = index;">
+          <div *ngIf="i >= 0 && i <= flightInclusion.length - 2" fxLayout="row">
+            <div class="flight-inclusion"  [ngClass]="{'flight-inclusion-selected': colorRedOrNot(i)}" (click)="selectConvenienceOf(i)">
+              {{flightInclusion[i].code}} - {{flightInclusion[i+1].code}}
+            </div>
+            <div style="padding: 3px; color: #999; font-size: 10px" *ngIf="i !== flightInclusion.length -2">
+              -
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div style="width:270px; padding: 8px;" fxLayout="row" fxLayoutAlign="space-between none">
       <div fxLayout="column" class="convenience tooltip" [ngClass]="{'convenience-present-or-not': presentOrNot('aircraft')}">
         <i class="fa fa-plane" aria-hidden="true" style="text-align: center"></i>
-        <div>Aircraft<span class="tooltiptext" *ngIf="presentOrNot('aircraft')">{{flight.convenienceAvailable.aircraft}}</span></div>
+        <div>Aircraft<span class="tooltiptext" *ngIf="presentOrNot('aircraft')">{{convenience.aircraft}}</span></div>
       </div>
       <div fxLayout="column" class="convenience tooltip" [ngClass]="{'convenience-present-or-not': presentOrNot('meal')}">
         <i class="fa fa-cutlery" aria-hidden="true" style="text-align: center"></i>
-        <div>Meal <span class="tooltiptext" *ngIf="presentOrNot('meal')">{{flight.convenienceAvailable.meal}}</span></div>
+        <div>Meal <span class="tooltiptext" *ngIf="presentOrNot('meal')">{{convenience.meal}}</span></div>
       </div>
       <div fxLayout="column" class="convenience tooltip" [ngClass]="{'convenience-present-or-not': presentOrNot('internet')}">
         <i class="fa fa-wifi" aria-hidden="true" style="text-align: center"></i>
-        <div>Internet<span class="tooltiptext" *ngIf="presentOrNot('internet')">{{flight.convenienceAvailable.internet}}</span></div>
+        <div>Internet<span class="tooltiptext" *ngIf="presentOrNot('internet')">{{convenience.internet}}</span></div>
       </div>
       <div fxLayout="column" class="convenience tooltip" [ngClass]="{'convenience-present-or-not': presentOrNot('entertainment')}">
         <i class="fa fa-youtube-play" aria-hidden="true" style="text-align: center"></i>
-        <div>Entertainment<span class="tooltiptext" *ngIf="presentOrNot('entertainment')">{{flight.convenienceAvailable.entertainment}}</span></div>
+        <div>Entertainment<span class="tooltiptext" *ngIf="presentOrNot('entertainment')">{{convenience.entertainment}}</span></div>
       </div>
     </div>
     <div style="width:235px; font-size: 12px; color: #333; padding: 13px 5px;" fxLayout="row-reverse" fxLayoutGap="5px">
       <div class="flight-details-refundable-or-not">e-cash</div>
       <div class="vertical-line"></div>
-      <div class="flight-details-refundable-or-not" (click)="showDetails = !showDetails">Flight Details</div>
+      <div class="flight-details-refundable-or-not" (click)="showDetails = !showDetails; showFare = false;">Flight Details</div>
       <div class="vertical-line"></div>
-      <div class="flight-details-refundable-or-not">{{flight.fareType}}</div>
+      <div class="flight-details-refundable-or-not" (click)="showDetails = !showDetails; showFare = true;">{{flight.fareType}}</div>
     </div>
   </div>
-  <app-flight-details *ngIf="showDetails" (closeEmitter)="showDetails = !showDetails"></app-flight-details>
+  <app-flight-details *ngIf="showDetails" (closeEmitter)="showDetails = !showDetails" [showFare]="showFare" [flight]="flight" [flightInclusion]="flightInclusion"></app-flight-details>
 </div>
 

@@ -6,18 +6,22 @@
 .flight-and-aircraft {
   padding: 5px 15px 5px 0;
   border-right: 1px solid #cdcecf;
+  width: 212px;
 }
 
 .from-place-time {
   padding: 5px 15px;
+  width: 157px;
 }
 
 .other {
   padding: 5px 0;
+  width: 182px;
 }
 
 .to-place-time {
   padding: 5px 0 5px 15px;
+  width: 157px;
 }
 
 .airline-name {
@@ -33,4 +37,16 @@
 
 .round ::ng-deep .fa {
   color: #bebebe;
+}
+
+.fare-type {
+  border: 1px solid #ee7282;
+  padding: 0 5px;
+  color: #ee7282;
+  border-radius: 3px;
+}
+
+.fare-type-refundable {
+  border: 1px solid green;
+  color: green;
 }

@@ -1,0 +1,27 @@
+<div class="baggage-rules-container"fxLayout="column">
+    <div fxLayout="column" style="margin-bottom: 10px;" *ngFor="let el of flightInclusion; let i = index;">
+      <div *ngIf="i <= flightInclusion.length - 2">
+        <div fxLayout="row" fxLayoutGap="10px" style="background-color: #F9F9F9; width: 140px; padding: 5px;">
+          <div><i class="fa fa-plane fa-4x" aria-hidden="true"></i></div>
+          <div style="font-size: 11px; font-weight: bold; color: #333333">FROM {{flightInclusion[i].place}}</div>
+        </div>
+        <div style="font-size: 11px; font-weight: bold; color: #333333; padding: 10px 0;">{{flightInclusion[i].code}} - {{flightInclusion[i + 1].code}}</div>
+        <div fxLayout="column">
+          <div fxLayout="row" style="background-color: #f7f7f7; border: 1px solid #ddd">
+            <div  style="padding: 7px 5px; font-size: 12px; font-weight: bold; width: 424px; border-right: 1px solid #ddd;">{{flightInclusion[i].place}} - {{flightInclusion[i + 1].place}}</div>
+            <div  style="padding: 7px 5px; font-size: 12px; font-weight: bold; width: 134px; border-right: 1px solid #ddd;">Cable</div>
+            <div  style="padding: 7px 5px; font-size: 12px; font-weight: bold; width: 134px;">Check-in</div>
+          </div>
+          <div fxLayout="row" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+            <div  style="padding: 7px 5px; font-size: 12px; width: 424px; border-right: 1px solid #ddd;">Adult</div>
+            <div  style="padding: 7px 5px; font-size: 12px; width: 134px; border-right: 1px solid #ddd;">{{flight.baggage}}</div>
+            <div  style="padding: 7px 5px; font-size: 12px; width: 134px;">{{flight.noOfBaggages}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div style="padding: 10px 20px; background-color: #f8f8f8; width: 724px; font-size: 12px; color: #999999">
+  The baggage information is just for reference. Please check with airline before check-in. For more information , visit China Eastern website
+  1 piece baggage is equivalent to 23 kgs or 50 lbs for adult/child and 10 kgs or 22 lbs for infants
+</div>

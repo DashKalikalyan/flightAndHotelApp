@@ -16,7 +16,9 @@ import { FilterTypeTitleComponent } from './flight-booking/side-filter/filter-ty
 import {SliderModule} from 'primeng/slider';
 import { PaginationComponent } from './flight-booking/flight-list/pagination/pagination.component';
 import { FlightDetailsComponent } from './flight-booking/flight-list/flight-item/flight-details/flight-details.component';
-import { ItineraryComponent } from './flight-booking/flight-list/flight-item/itinerary/itinerary.component';
+import { ItineraryComponent } from './flight-booking/flight-list/flight-item/flight-details/itinerary/itinerary.component';
+import { FareSummeryRulesComponent } from './flight-booking/flight-list/flight-item/flight-details/fare-summery-rules/fare-summery-rules.component';
+import { BaggageRulesComponent } from './flight-booking/flight-list/flight-item/flight-details/baggage-rules/baggage-rules.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ItineraryComponent } from './flight-booking/flight-list/flight-item/iti
     PaginationComponent,
     FlightDetailsComponent,
     ItineraryComponent,
+    FareSummeryRulesComponent,
+    BaggageRulesComponent,
   ],
   imports: [
     BrowserModule,

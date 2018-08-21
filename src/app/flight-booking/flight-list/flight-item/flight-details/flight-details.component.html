@@ -1,32 +1,37 @@
 <div>
   <div fxLayout="row" fxLayoutAlign="space-between none" class="header">
     <div>Flight Details</div>
-    <div class="cancel" (click)="onCancel()"><img src="../../../../../assets/flight-details-page-cancel-button.png" alt="" width="16px" height="16px"></div>
+    <div class="cancel" (click)="onCancel()"><img src="../../../../../assets/flight-details-page-cancel-button.png"
+                                                  alt="" width="16px" height="16px"></div>
   </div>
   <div class="container" fxLayout="row" class="container" fxLayoutAlign="space-between none">
     <div fxLayout="column" fxLayoutGap="5px">
-      <div class="from-to">New Delhi - San Francisco</div>
-      <div class="date">Wed, 3 Oct</div>
+      <div class="from-to">{{flight.from}} - {{flight.to}}</div>
+      <div class="date">{{flight.departureTime | date: 'EEE, d MMM'}}</div>
     </div>
     <div fxLayout="column" fxLayoutGap="5px">
-      <div class="from-to">Rs.1,15,058</div>
+      <div class="from-to">$ {{flight.price}}</div>
       <div class="date">(Per Adult)</div>
     </div>
   </div>
+
+
   <div fxLayout="row">
-    <div class="content-type-container-1">
-      <div class="space"></div>
+    <div class="content-type-container-1" (click)="selectThis('itinerary')">
+      <div class="space" [ngClass]="{'space-selected': isItSelected('itinerary')}"></div>
       <div class="content-type">ITINERARY</div>
     </div>
-    <div class="content-type-container-2">
-      <div class="space"></div>
+    <div class="content-type-container-2" (click)="selectThis('fare-summery')">
+      <div class="space" [ngClass]="{'space-selected': isItSelected('fare-summery')}"></div>
       <div class="content-type">FARE SUMMERY & RULES</div>
     </div>
-    <div class="content-type-container-3">
-      <div class="space"></div>
+    <div class="content-type-container-3" (click)="selectThis('baggage')">
+      <div class="space" [ngClass]="{'space-selected': isItSelected('baggage')}"></div>
       <div class="content-type">BAGGAGE</div>
     </div>
   </div>
-  <app-itinerary></app-itinerary>
-</div>
 
+  <app-baggage-rules *ngIf="this.flightDetailsMap.get('baggage')" [flight]="flight" [flightInclusion]="flightInclusion"></app-baggage-rules>
+  <app-fare-summery-rules *ngIf="this.flightDetailsMap.get('fare-summery')" [flight]="flight"></app-fare-summery-rules>
+  <app-itinerary *ngIf="this.flightDetailsMap.get('itinerary')" [flight]="flight"></app-itinerary>
+</div>
