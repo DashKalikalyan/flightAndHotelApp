@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Trip } from './trip.model';
+import {CreateTripService} from './create-trip.service';
 
 @Component({
   selector: 'app-itinerary',
@@ -10,10 +11,10 @@ export class ItineraryComponent implements OnInit {
   @Input() flight;
 
   trips: Trip[] = [];
-  constructor() { }
+  constructor(private createTripService: CreateTripService) { }
 
   ngOnInit() {
-    this.createTrips();
+    this.trips = this.createTripService.createTrips(this.flight);
     console.log(this.trips);
   }
 
