@@ -34,7 +34,7 @@
     </div>
     <div class="price-and-book" fxLayout="row" fxLayoutAlign="space-between none">
       <div class="price">{{ flight.price }}</div>
-      <p-button label="Book Now" (onClick)="disabled = !disabled" [disabled]="disabled"></p-button>
+      <p-button label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [disabled]="disabled"></p-button>
     </div>
   </div>
 

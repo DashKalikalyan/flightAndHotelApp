@@ -15,20 +15,22 @@
     </div>
   </div>
 
-
-  <div fxLayout="row">
-    <div class="content-type-container-1" (click)="selectThis('itinerary')">
-      <div class="space" [ngClass]="{'space-selected': isItSelected('itinerary')}"></div>
-      <div class="content-type">ITINERARY</div>
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div fxLayout="row">
+      <div class="content-type-container-1" (click)="selectThis('itinerary')">
+        <div class="space" [ngClass]="{'space-selected': isItSelected('itinerary')}"></div>
+        <div class="content-type">ITINERARY</div>
+      </div>
+      <div class="content-type-container-2" (click)="selectThis('fare-summery')">
+        <div class="space" [ngClass]="{'space-selected': isItSelected('fare-summery')}"></div>
+        <div class="content-type">FARE SUMMERY & RULES</div>
+      </div>
+      <div class="content-type-container-3" (click)="selectThis('baggage')">
+        <div class="space" [ngClass]="{'space-selected': isItSelected('baggage')}"></div>
+        <div class="content-type">BAGGAGE</div>
+      </div>
     </div>
-    <div class="content-type-container-2" (click)="selectThis('fare-summery')">
-      <div class="space" [ngClass]="{'space-selected': isItSelected('fare-summery')}"></div>
-      <div class="content-type">FARE SUMMERY & RULES</div>
-    </div>
-    <div class="content-type-container-3" (click)="selectThis('baggage')">
-      <div class="space" [ngClass]="{'space-selected': isItSelected('baggage')}"></div>
-      <div class="content-type">BAGGAGE</div>
-    </div>
+    <p-button style="padding-right: 12px;" label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [disabled]="disabled"></p-button>
   </div>
 
   <app-baggage-rules *ngIf="this.flightDetailsMap.get('baggage')" [flight]="flight" [flightInclusion]="flightInclusion"></app-baggage-rules>

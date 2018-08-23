@@ -68,3 +68,25 @@
   border-right: 1px solid #e2e2e2;
   cursor: pointer;
 }
+
+p-button ::ng-deep .ui-button {
+  width: 115px;
+  height: 36px;
+}
+
+p-button ::ng-deep .ui-button:enabled {
+  border: 1px solid #F34F4F;
+  background-color: #F34F4F;
+}
+
+p-button ::ng-deep .ui-button:enabled:hover {
+  background-color: #EA2330;
+  border: 1px solid #EA2330;
+}
+
+p-button ::ng-deep .ui-button:disabled {
+  opacity: 1;
+  color: #999;
+  border: 1px solid #E2E2E2;
+  background-color: #E2E2E2;
+}

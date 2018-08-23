@@ -1,0 +1,132 @@
+<div fxLayoutAlign="center none" class="container">
+  <div fxLayout="row" fxLayoutGap="15px" class="booking-details-container">
+    <div class="left" fxLayout="column" fxLayoutGap="30px">
+      <div class="review-booking">
+        <div *ngFor="let trip of trips; let i = index;">
+          <div class="trip-details" fxLayout="row">
+            <div class="carrier-details">
+              <div><img src="../../../assets/air_india.png" alt="" width="28px" height="28px"></div>
+              <div>{{trip.operator.carrier}}</div>
+              <div style="color: #999999; font-size: 10px;">{{trip.operator.name}}</div>
+              <div>{{trip.operator.airCraft}}</div>
+            </div>
+            <div style="padding: 0 15px;" fxLayout="row" fxLayoutAlign="space-between none">
+              <div fxLayout="column" fxLayoutGap="5px" class="depart-arrive-details">
+                <div class="depart-arrive-from">{{trip.depart.departFrom}}, IN</div>
+                <div class="depart-arrive-time">{{trip.depart.departTime | date: 'HH:mm'}}</div>
+                <div class="depart-arrive-date-day">{{trip.depart.departTime | date: 'EEE, dd MMM y'}}</div>
+                <div class="depart-arrive-terminal">{{trip.depart.fromTerminal}}</div>
+              </div>
+              <div class="important-details" fxLayout="column" fxLayoutGap="5px">
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center none" style="font-size: 16px;"
+                     class="time-taken-meal-plane-ticket-class">
+                  <div>16h 00m</div>
+                  <div class="vertical-line">|</div>
+                  <div> Free Meal</div>
+                  <div class="vertical-line">|</div>
+                  <div>Business</div>
+                </div>
+                <div fxLayoutAlign="center none" style="color: #999999; font-size: 12px">Flight</div>
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center none">
+                  <div style="color: #333333">2 piece</div>
+                  <div class="vertical-line">|</div>
+                  <div style="color: green;"> Partially Refundable</div>
+                  <div class="vertical-line">|</div>
+                  <div style="color: dodgerblue;">Visa Details</div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="center none" class="depart-arrive-details">
+                <div class="depart-arrive-from">{{trip.arrive.arriveAt}}, US</div>
+                <div class="depart-arrive-time">{{trip.arrive.arrivalTime | date: 'HH:mm'}}</div>
+                <div class="depart-arrive-date-day">{{trip.arrive.arrivalTime | date: 'EEE, dd MMM y'}}</div>
+                <div class="depart-arrive-terminal">{{trip.arrive.atTerminal}}</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end none" *ngIf="i !== trips.length -1;">
+            <div class="plane-change-details">
+              Change planes at {{trip.arrive.arriveAt}}, Connecting Time: 01h 010m | Flight may depart from a different
+              terminal
+            </div>
+          </div>
+        </div>
+        <div class="important-note" fxLayout="column" fxLayoutGap="5px">
+          <div style="font-weight: bold;">Important Note</div>
+          <div>The Fare Rules for your flight selection have changed. Please review them before proceeding.</div>
+        </div>
+      </div>
+      <div class="traveller-details">
+        <div fxLayout="column" fxLayoutGap="10px">
+          <div fxLayout="row" fxLayoutGap="15px">
+            <div class="contact-details-title">Contact Details</div>
+            <input type="text" placeholder="Email">
+            <div fxLayout="row">
+              <div>
+                <p-dropdown [options]="countryCodes" [(ngModel)]="selectedCountryCode"></p-dropdown>
+              </div>
+              <input id="email" type="text" placeholder="Mobile Number">
+            </div>
+          </div>
+          <div class="send-booking-details">
+            Your booking details will be sent to this email address and mobile number.
+          </div>
+        </div>
+        <div class="traveller-name-dob-title" fxLayout="column" fxLayoutGap="15px">
+          <div fxLayout="row" fxLayoutGap="10px">
+            <div style="font-size: 18px; font-weight: bold; color: #333333;">Traveller Information</div>
+            <div style="font-size: 16px; font-weight: bold; color: #333333;">|</div>
+            <div style="" class="selct-traveller"> Select traveller from list</div>
+          </div>
+          <div class="important-traveller-note-content"><span
+            class="important-traveller-note-title">Important Note: </span> Please ensure that the names of the
+            passengers on the travel documents is the same as on their passports. <span
+              class="view-more" (click)="showPassportInfo = !showPassportInfo"
+              *ngIf="!showPassportInfo">View More</span>
+            <span
+              class="view-more" (click)="showPassportInfo = !showPassportInfo" *ngIf="showPassportInfo">View Less</span>
+          </div>
+          <div class="passport-info" *ngIf="showPassportInfo">- Your passport should be valid for 6 months from the date
+            of travel.
+          </div>
+          <div class="passport-info" *ngIf="showPassportInfo">- Date of birth (DOB) is mandatory for USA and Canada
+            tickets. In case details not provided, you will be contacted for the same (however fares could change in the
+            interim).
+          </div>
+          <div fxLayout="row" fxLayoutGap="15px">
+            <div fxLayout="row">
+              <div>
+                <p-dropdown [options]="titleValues" [(ngModel)]="selectedTitleValue"></p-dropdown>
+              </div>
+              <input id="first-name" type="text" placeholder="First Name">
+            </div>
+            <input id="last-name" type="text" placeholder="Last Name">
+            <p-calendar [(ngModel)]="value" placeholder="DOB" [maxDate]="currentTime" [monthNavigator]="true"
+                        [yearNavigator]="true" yearRange="1970:{{currentTime.getFullYear()}}"></p-calendar>
+          </div>
+          <div fxLayout="row" fxLayoutGap="5px" class="optional-passport" (click)="showPassportDetails = !showPassportDetails">
+            <div class="optional-passport-title">Optional (Passport)</div>
+            <i class="fa fa-chevron-down" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;" *ngIf="!showPassportDetails"></i>
+            <i class="fa fa-chevron-up" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;" *ngIf="showPassportDetails"></i>
+          </div>
+          <div class="passport-name-date-national" fxLayout="column" fxLayoutGap="10px" *ngIf="showPassportDetails">
+            <div style="color: #000000; font-size: 14px;">Passport Details</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <input type="text" placeholder="Nationality">
+              <input type="text" placeholder="Passport No.">
+              <div>
+                <p-dropdown [options]="countryPasspostCode" [(ngModel)]="selectedCountryCode"></p-dropdown>
+              </div>
+              <p-calendar [(ngModel)]="value" placeholder="Expiry Date" [minDate]="currentTime" [monthNavigator]="true"
+                          [yearNavigator]="true"
+                          yearRange="{{currentTime.getFullYear()}}:{{currentTime.getFullYear() + 10}}"></p-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayoutAlign="center none">
+        <p-button label="Proceed To Payment" (onClick)="disabled = !disabled;" [disabled]="disabled"></p-button>
+      </div>
+    </div>
+    <app-fare-details></app-fare-details>
+  </div>
+</div>

@@ -12,9 +12,9 @@
         <div></div>
       </div>
       <div class="from-place-time" fxLayout="column" fxLayoutGap="5px">
-        <div style="font-size: 12px; color: #333;">{{trip.depart.departFrom}} ({{trip.depart.departFromCode}})</div>
-        <div style="font-weight: bold; font-size: 14px; color: #333">{{trip.depart.departTime | date: 'EEE, dd MMM, HH:mm'}}</div>
-        <div style="font-size: 12px; color: #333;">{{trip.depart.fromTerminal}}</div>
+        <div class="depart-arrive-terminal">{{trip.depart.departFrom}} ({{trip.depart.departFromCode}})</div>
+        <div class="depart-arrive-time">{{trip.depart.departTime | date: 'EEE, dd MMM, HH:mm'}}</div>
+        <div class="depart-arrive-terminal">{{trip.depart.fromTerminal}}</div>
       </div>
       <div class="other" fxLayout="column" fxLayoutGap="3px">
         <div style="color: #333; font-size: 12px;"> {{ timeConversion(trip.arrive.arrivalTime - trip.depart.departTime)}} | Non-Stop</div>
@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="to-place-time" fxLayout="column" fxLayoutGap="5px">
-        <div style="font-size: 12px; color: #333;">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</div>
-        <div style="font-weight: bold; font-size: 14px; color: #333">{{trip.arrive.arrivalTime | date: 'EEE, dd MMM, HH:mm'}}</div>
-        <div style="font-size: 12px; color: #333;">{{trip.arrive.atTerminal}}</div>
+        <div class="depart-arrive-terminal">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</div>
+        <div class="depart-arrive-time">{{trip.arrive.arrivalTime | date: 'EEE, dd MMM, HH:mm'}}</div>
+        <div class="depart-arrive-terminal">{{trip.arrive.atTerminal}}</div>
       </div>
     </div>
     <div *ngIf="i !== trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span style="font-weight: bold;" >Bangalore (BLR)</span>, Connecting Time: <span style="font-weight: bold;">06h 00m</span> |  Connecting flight may depart from a different terminal</div>

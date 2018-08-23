@@ -1,0 +1,38 @@
+.fare {
+  width: 280px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #666666;
+}
+
+.base-fare {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.base-fare:hover {
+  border-bottom: 1px solid red;
+}
+
+.base-fare:hover ::ng-deep .base-fare-title{
+  color: red;
+}
+
+.no-of-traveller {
+  color: #999999;
+  font-size: 12px;
+}
+
+.fee-surcharge:hover ::ng-deep .fee-surcharge-title {
+  color: red;
+}
+
+
+.fee-surcharge {
+  cursor: pointer;
+}
+
+.fee-surcharge:hover {
+  border-bottom: 1px solid red;
+}
+

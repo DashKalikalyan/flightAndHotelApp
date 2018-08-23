@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {forEach} from '@angular/router/src/utils/collection';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-flight-item',
@@ -15,7 +16,7 @@ export class FlightItemComponent implements OnInit {
   showFare = false;
   convenience;
   flightInclusion = [];
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -69,5 +70,10 @@ export class FlightItemComponent implements OnInit {
     this.flightInclusionMap.forEach((value, key, map) => {
       map.set(key, false);
     });
+  }
+
+  reviewFlight() {
+    console.log(this.flight);
+    this.router.navigate(['flight-review', this.flight.id]);
   }
 }

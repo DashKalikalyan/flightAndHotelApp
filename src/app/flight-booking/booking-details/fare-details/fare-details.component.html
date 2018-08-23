@@ -1,0 +1,46 @@
+<div class="right">
+  <div class="fare" fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div fxLayout="row" fxLayoutGap="5px" class="base-fare" (click)="showBaseExtra = !showBaseExtra">
+        <div class="base-fare-title">Base Fare</div>
+        <div class="no-of-traveller">(1 Traveller)</div>
+        <i class="fa fa-chevron-down" aria-hidden="true" style="font-size:10px;"></i>
+      </div>
+      <div style="font-size: 12px;">Rs. 1,26,410</div>
+    </div>
+    <div *ngIf="showBaseExtra" (click)="showBaseExtra = !showBaseExtra" class="base-fare-details" fxLayout="row"
+         fxLayoutAlign="space-between none">
+      <div>Adult x 1</div>
+      <div>Rs.1,26,410</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div fxLayout="row" fxLayoutGap="5px" style="font-size: 16px;"
+           (click)="feeSurchargeExtra = !feeSurchargeExtra" class="fee-surcharge">
+        <div class="fee-surcharge-title">Fee & Surcharges</div>
+        <i class="fa fa-chevron-down" aria-hidden="true" style="font-size:10px;"></i>
+      </div>
+      <div style="font-size: 12px;">Rs. 30,073</div>
+    </div>
+    <div *ngIf="feeSurchargeExtra" (click)="feeSurchargeExtra = !feeSurchargeExtra">
+      <div class="base-fare-details" fxLayout="row" fxLayoutAlign="space-between none">
+        <div>Passenger Service Fees</div>
+        <div>Rs.1,26,410</div>
+      </div>
+      <div class="base-fare-details" fxLayout="row" fxLayoutAlign="space-between none">
+        <div>Fuel Surcharge by Airline</div>
+        <div>Rs.1,26,410</div>
+      </div>
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between none"
+         style="padding-top: 5px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; padding: 5px 0;">
+      <div style="font-size: 18px; color: #333333;">Total Fare</div>
+      <div style="font-size: 18px; color: #333333;">Rs. 1,56,483</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between none"
+         style="font-weight: bold; font-size: 22px; background-color: #e2e2e2; padding: 5px 10px;">
+      <div>You Pay:</div>
+      <div>Rs.1,56,483</div>
+    </div>
+  </div>
+</div>

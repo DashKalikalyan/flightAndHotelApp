@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-flight-details',
@@ -10,9 +11,10 @@ export class FlightDetailsComponent implements OnInit {
   @Input() showFare;
   @Input() flight;
   @Input() flightInclusion;
+  disabled = false;
 
   flightDetailsMap = new Map<string, boolean>();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.flightDetailsMap.set('itinerary', false)
@@ -42,6 +44,11 @@ export class FlightDetailsComponent implements OnInit {
     this.flightDetailsMap.forEach((value, key, map) => {
       map.set(key, false);
     });
+  }
+
+  reviewFlight() {
+    console.log(this.flight);
+    this.router.navigate(['flight-review', this.flight.id]);
   }
 
 }

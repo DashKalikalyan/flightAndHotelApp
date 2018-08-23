@@ -19,7 +19,21 @@ import { FlightDetailsComponent } from './flight-booking/flight-list/flight-item
 import { ItineraryComponent } from './flight-booking/flight-list/flight-item/flight-details/itinerary/itinerary.component';
 import { FareSummeryRulesComponent } from './flight-booking/flight-list/flight-item/flight-details/fare-summery-rules/fare-summery-rules.component';
 import { BaggageRulesComponent } from './flight-booking/flight-list/flight-item/flight-details/baggage-rules/baggage-rules.component';
+import { BookingDetailsComponent } from './flight-booking/booking-details/booking-details.component';
+import {CalendarModule, DropdownModule, RadioButtonModule} from 'primeng/primeng';
+import { HotelBookingComponent } from './hotel-booking/hotel-booking.component';
+import { HotelListComponent } from './hotel-booking/hotel-list/hotel-list.component';
+import { HotelSideFilterComponent } from './hotel-booking/hotel-side-filter/hotel-side-filter.component';
+import {RouterModule, Routes} from '@angular/router';
+import { FareDetailsComponent } from './flight-booking/booking-details/fare-details/fare-details.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PaymentUiFirstStyleComponent } from './payment/payment-ui-first-style/payment-ui-first-style.component';
 
+const appRoutes: Routes = [
+  {path: '', redirectTo: 'flight-list', pathMatch: 'full' },
+  {path: 'flight-list', component: FlightBookingComponent},
+  {path: 'flight-review/:id', component: BookingDetailsComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +48,13 @@ import { BaggageRulesComponent } from './flight-booking/flight-list/flight-item/
     ItineraryComponent,
     FareSummeryRulesComponent,
     BaggageRulesComponent,
+    BookingDetailsComponent,
+    HotelBookingComponent,
+    HotelListComponent,
+    HotelSideFilterComponent,
+    FareDetailsComponent,
+    PaymentComponent,
+    PaymentUiFirstStyleComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +63,11 @@ import { BaggageRulesComponent } from './flight-booking/flight-list/flight-item/
     FlexLayoutModule,
     CheckboxModule,
     BrowserAnimationsModule,
-    SliderModule
+    SliderModule,
+    DropdownModule,
+    CalendarModule,
+    RadioButtonModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
