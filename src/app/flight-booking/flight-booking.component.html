@@ -1,6 +1,7 @@
 <div fxLayoutAlign="center none">
   <div class="container" fxLayout="row" fxLayoutGap="15px">
     <app-side-filter [carriers]="carriers" [carriersMap]="carriersMap" [carriersMapPrice]="carriersMapPrice"
+                     [classes]="classes" [classesMap]="classesMap" [classesMapPrice]="classesMapPrice"
                      [alliances]="alliances" [alliancesMap]="alliancesMap" [fareTypes]="fareTypes"
                      [fareTypesMap]="fareTypesMap" [maxPrice]="maxPrice" [minPrice]="minPrice" [noOfStops]="noOfStops"
                      [noOfStopsMap]="noOfStopsMap" [alliancesMapPrice]="alliancesMapPrice"
@@ -10,5 +11,6 @@
     <app-flight-list [filteredFlights]="filteredFlightsPerPage" [totalRecords]="filteredFlights.length" (goNextEmit)="goNext()" (goPrevEmit)="goPrev()"
                      (goToPageEmit)="goToPage($event)" [currentPage]="currentPage" [perPage]="perPage"
                      [pagesToShow]="pagesToShow"></app-flight-list>
+
   </div>
 </div>

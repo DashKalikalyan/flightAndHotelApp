@@ -11,6 +11,7 @@ export class FlightBookingComponent implements OnInit {
   carriers = [];
   alliances = [];
   fareTypes = [];
+  classes = [];
   layOvers = [];
   minPrice: number;
   maxPrice: number;
@@ -23,6 +24,8 @@ export class FlightBookingComponent implements OnInit {
   fareTypesMapPrice = new Map<string, number>();
   noOfStopsMap = new Map<number, number>();
   noOfStopsMapPrice = new Map<number, number>();
+  classesMap = new Map<string, number>();
+  classesMapPrice = new Map<string, number>();
   layOversMap = new Map<string, number>();
   layOversMapPrice = new Map<number, number>();
   vias = [];
@@ -30,7 +33,7 @@ export class FlightBookingComponent implements OnInit {
   filteredFlights = [];
   filteredFlightsPerPage = [];
   currentPage = 1;
-  perPage = 10;
+  perPage = 20;
   pagesToShow = 2;
   filterBy = [];
   constructor(private flightBookingService: FlightBookingService) { }
@@ -51,6 +54,7 @@ export class FlightBookingComponent implements OnInit {
     this.getAllAlliancesAndMinimumPriceOfEach();
     this.getAllFaretypesAndMinimumPriceOfEach();
     this.getAllNoOfStopsAndMinimumPriceOfEach();
+    this.getAllClassesAndMinimumPriceOfEach();
   }
 
   getAllCarriersAndMinimumPriceOfEach() {
@@ -67,6 +71,24 @@ export class FlightBookingComponent implements OnInit {
     this.flights.forEach((flight) => {
       if (flight.price < this.carriersMapPrice.get(flight.carrier)) {
         this.carriersMapPrice.set(flight.carrier, flight.price);
+      }
+    });
+  }
+
+  getAllClassesAndMinimumPriceOfEach() {
+    this.classes = Array.from(new Set(this.flights.map((flight) => {
+      return flight.class;
+    })));
+    this.classes.forEach((el) => {
+      this.classesMap.set(el, 0);
+      this.classesMapPrice.set(el, this.maxPrice);
+    });
+    this.flights.forEach((flight) => {
+      this.classesMap.set(flight.class, this.classesMap.get(flight.class) + 1);
+    });
+    this.flights.forEach((flight) => {
+      if (flight.price < this.classesMapPrice.get(flight.class)) {
+        this.classesMapPrice.set(flight.class, flight.price);
       }
     });
   }
@@ -124,6 +146,8 @@ export class FlightBookingComponent implements OnInit {
       }
     });
   }
+
+
 
   filter(selectedfilterValues) {
     console.log(selectedfilterValues);

@@ -12,10 +12,15 @@ export class SideFilterComponent implements OnInit {
   @Input() maxPrice;
   @Input() minPrice;
   @Input() noOfStops;
+  @Input() classes;
+
   @Input() carriersMap;
   @Input() alliancesMap;
   @Input() fareTypesMap;
   @Input() noOfStopsMap;
+  @Input() classesMap;
+  @Input() classesMapPrice;
+
   @Input() carriersMapPrice;
   @Input() alliancesMapPrice;
   @Input() fareTypesMapPrice;
@@ -103,16 +108,12 @@ export class SideFilterComponent implements OnInit {
         filterMap: this.noOfStopsMap,
         filterPriceMap: this.noOfStopsMapPrice
       },
-      // {
-      //   filterType: 'layover airports',
-      //   filterValues: this.layovers,
-      //   filterMap: this.layOversMap
-      // },
-      // {
-      //   filterType: 'layover time (in hours)',
-      //   filterValues: this.layOverTimes,
-      //   filterMap:
-      // }
+      {
+        filterType: 'class',
+        filterValues: this.classes,
+        filterMap: this.classesMap,
+        filterPriceMap: this.classesMapPrice
+      }
     ];
     this.lowerLimit = this.minPrice;
     this.higherLimit = this.maxPrice;
