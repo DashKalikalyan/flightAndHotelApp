@@ -30,7 +30,7 @@ export class FlightBookingComponent implements OnInit {
   filteredFlights = [];
   filteredFlightsPerPage = [];
   currentPage = 1;
-  perPage = 2;
+  perPage = 10;
   pagesToShow = 2;
   filterBy = [];
   constructor(private flightBookingService: FlightBookingService) { }

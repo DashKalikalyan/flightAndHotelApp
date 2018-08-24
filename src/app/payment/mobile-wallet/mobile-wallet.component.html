@@ -1,0 +1,12 @@
+<app-payment-plan></app-payment-plan>
+<div class="payment-method-title">Pay with Mobile Wallet</div>
+<div fxLayout="row wrap" fxLayoutGap="20px">
+  <div fxLayout="row" fxLayoutGap="5px" *ngFor="let wallet of wallets;">
+    <div class="radio-button-align">
+      <p-radioButton name="type-bank-or-wallet" [value]="wallet.name" [(ngModel)]="selectedWalletName"></p-radioButton>
+    </div>
+    <img src="{{wallet.imagePath}}" alt="" width="130px" height="55px" style="border: 1px solid black;">
+  </div>
+</div>
+<app-total-price-pay-now></app-total-price-pay-now>
+

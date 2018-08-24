@@ -27,12 +27,19 @@ import { HotelSideFilterComponent } from './hotel-booking/hotel-side-filter/hote
 import {RouterModule, Routes} from '@angular/router';
 import { FareDetailsComponent } from './flight-booking/booking-details/fare-details/fare-details.component';
 import { PaymentComponent } from './payment/payment.component';
-import { PaymentUiFirstStyleComponent } from './payment/payment-ui-first-style/payment-ui-first-style.component';
+import { TotalPricePayNowComponent } from './payment/total-price-pay-now/total-price-pay-now.component';
+import { FooterComponent } from './footer/footer.component';
+import { MobileWalletComponent } from './payment/mobile-wallet/mobile-wallet.component';
+import { NetBankingComponent } from './payment/net-banking/net-banking.component';
+import { DebitCardComponent } from './payment/debit-card/debit-card.component';
+import { CreditCardComponent } from './payment/credit-card/credit-card.component';
+import { PaymentPlanComponent } from './payment/payment-plan/payment-plan.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'flight-list', pathMatch: 'full' },
   {path: 'flight-list', component: FlightBookingComponent},
-  {path: 'flight-review/:id', component: BookingDetailsComponent}
+  {path: 'flight-review/:id', component: BookingDetailsComponent},
+  {path: 'payment', component: PaymentComponent}
 ];
 @NgModule({
   declarations: [
@@ -54,7 +61,13 @@ const appRoutes: Routes = [
     HotelSideFilterComponent,
     FareDetailsComponent,
     PaymentComponent,
-    PaymentUiFirstStyleComponent
+    TotalPricePayNowComponent,
+    FooterComponent,
+    MobileWalletComponent,
+    NetBankingComponent,
+    DebitCardComponent,
+    CreditCardComponent,
+    PaymentPlanComponent
   ],
   imports: [
     BrowserModule,

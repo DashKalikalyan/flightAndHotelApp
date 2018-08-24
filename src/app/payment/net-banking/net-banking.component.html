@@ -1,0 +1,12 @@
+<app-payment-plan></app-payment-plan>
+<div class="payment-method-title">Pay with Net Banking</div>
+<div fxLayout="row wrap" fxLayoutGap="20px">
+  <div fxLayout="row" fxLayoutGap="5px" *ngFor="let bank of banks;">
+    <div class="radio-button-align">
+      <p-radioButton name="type-bank-or-wallet" [value]="bank.name" [(ngModel)]="selectedBankName"></p-radioButton>
+    </div>
+    <img src="{{bank.imagePath}}" alt="" width="130px" height="55px" style="border: 1px solid black;">
+  </div>
+</div>
+<app-total-price-pay-now></app-total-price-pay-now>
+

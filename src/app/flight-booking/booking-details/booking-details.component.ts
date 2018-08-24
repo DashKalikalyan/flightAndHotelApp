@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {CreateTripService} from '../flight-list/flight-item/flight-details/itinerary/create-trip.service';
 import {Trip} from '../flight-list/flight-item/flight-details/itinerary/trip.model';
 import {FlightBookingService} from '../flight-booking.service';
@@ -27,6 +27,7 @@ export class BookingDetailsComponent implements OnInit {
     {label: 'Ms.', value: 'Ms.'}];
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private createTripService: CreateTripService,
               private flightBookingService: FlightBookingService) {
   }
@@ -468,5 +469,9 @@ export class BookingDetailsComponent implements OnInit {
     });
 
     this.trips = this.createTripService.createTrips(this.flightBookingService.getFlightById(this.route.snapshot.params['id']));
+  }
+
+  goToPayment() {
+    this.router.navigate(['payment']);
   }
 }

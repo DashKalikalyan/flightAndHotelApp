@@ -27,3 +27,9 @@
   padding: 45px 80px 70px 85px;
   background-color: #fff;
 }
+
+.border-of-selected {
+  border-left: 3px solid #ea2330;
+  color: #ea2330;
+  background-color: #fff;
+}

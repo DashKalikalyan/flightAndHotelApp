@@ -124,7 +124,7 @@
         </div>
       </div>
       <div fxLayoutAlign="center none">
-        <p-button label="Proceed To Payment" (onClick)="disabled = !disabled;" [disabled]="disabled"></p-button>
+        <p-button label="Proceed To Payment" (onClick)="disabled = !disabled; goToPayment();" [disabled]="disabled"></p-button>
       </div>
     </div>
     <app-fare-details></app-fare-details>

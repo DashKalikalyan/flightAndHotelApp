@@ -73,7 +73,6 @@ export class FlightItemComponent implements OnInit {
   }
 
   reviewFlight() {
-    console.log(this.flight);
     this.router.navigate(['flight-review', this.flight.id]);
   }
 }
