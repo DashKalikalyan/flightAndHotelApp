@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-fare-summery-rules',
@@ -7,13 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FareSummeryRulesComponent implements OnInit {
   @Input() flight;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
   getTax() {
     return Math.round(this.flight.price * 0.2);
   }
+
   getBase() {
     return Math.round(this.flight.price * 0.8);
   }

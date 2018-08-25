@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutGap="2px">
+  <div fxLayout="row" style="background-color: white;">
+    <div style="height: 54px; width: 11px;"></div>
+    <div class="all-airlines" (click)="showAll()" [ngClass]="{'all-carriers-active': selectedCarrier.length === 0}">All
+      Airlines
+    </div>
+  </div>
+  <div class="caret-container">
+    <div class="inner-caret" (click)="goPrev()" [ngClass]="{'deactivate-caret-hover': i === 0}">
+      <i class="fa fa-caret-left fa-3x align-caret" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" class="minimum-price-airline" *ngFor="let carrier of carriers.slice(i, i + 5)"
+       (click)="selectFlightsOfThisAirline(carrier)" [ngClass]="{'active-carrier': flightsCarriersMap.get(carrier)}">
+    <img src="../../../assets/air_india.png" alt="" width="30px" height="30px">
+    <div fxLayout="column">
+      <div style="font-size: 11px;">{{ shortenedCarrierName(carrier)}}</div>
+      <div style="font-size: 11px;">{{carriersMapPrice.get(carrier)}}</div>
+    </div>
+  </div>
+  <div class="caret-container">
+    <div class="inner-caret" (click)="goNext()" [ngClass]="{'deactivate-caret-hover': i === carriers.length - 5}">
+      <i class="fa fa-caret-right fa-3x align-caret" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>

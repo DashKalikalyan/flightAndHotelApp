@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Trip} from './trip.model';
 
 @Injectable({
@@ -6,7 +6,9 @@ import {Trip} from './trip.model';
 })
 export class CreateTripService {
 
-  constructor() { }
+  constructor() {
+  }
+
   createTrips(flight) {
     const trips: Trip[] = [];
     for (let i = 0; i <= flight.layOverDetails.length; i++) {
@@ -27,7 +29,7 @@ export class CreateTripService {
       class: flight.class,
       fareType: flight.fareType
     };
-    for (let i = 0; i < flight.layOverDetails.length; i++ ) {
+    for (let i = 0; i < flight.layOverDetails.length; i++) {
       trips[i].arrive = {
         arriveAt: flight.layOverDetails[i].via,
         arriveAtCode: flight.layOverDetails[i].viaCode,
@@ -36,7 +38,7 @@ export class CreateTripService {
         arrivalTime: flight.layOverDetails[i].arrivesAtVia
       };
 
-      if (i < flight.layOverDetails.length ) {
+      if (i < flight.layOverDetails.length) {
         trips[i + 1].depart = {
           departFrom: flight.layOverDetails[i].via,
           departFromCode: flight.layOverDetails[i].viaCode,
@@ -55,7 +57,7 @@ export class CreateTripService {
     }
 
     trips[trips.length - 1].arrive = {
-      arriveAt : flight.to,
+      arriveAt: flight.to,
       arriveAtCode: flight.toCode,
       atAirport: flight.arriveAirport,
       atTerminal: flight.toTerminal,

@@ -2,12 +2,14 @@
   <div *ngIf="totalRecords !== 0">
     <app-flight-item *ngFor="let flight of filteredFlights" [flight]="flight"></app-flight-item>
     <app-pagination (goNextEmit)="goNext()" (goPrevEmit)="goPrev()" (goToPageEmit)="goToPage($event)"
-                    [currentPage]="currentPage" [pagesToShow]="pagesToShow" [perPage]="perPage" [totalRecords]="totalRecords"></app-pagination>
+                    [currentPage]="currentPage" [pagesToShow]="pagesToShow" [perPage]="perPage"
+                    [totalRecords]="totalRecords"></app-pagination>
   </div>
   <div *ngIf="totalRecords === 0" style="width: 764px; background-color: #e2e2e2;" fxLayout="column" fxLayoutGap="20px">
     <div style="text-align: center;">We couldn't find flights matching your preferences</div>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center none">
-      <p-button label="Undo Last Filter" (onClick)="disabled = !disabled; goToPayment();" [disabled]="disabled"></p-button>
+      <p-button label="Undo Last Filter" (onClick)="disabled = !disabled; goToPayment();"
+                [disabled]="disabled"></p-button>
       <div><span class="reset">RESET ALL FILTERS</span></div>
     </div>
   </div>

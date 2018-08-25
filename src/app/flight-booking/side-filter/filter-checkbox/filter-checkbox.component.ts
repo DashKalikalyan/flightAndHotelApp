@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {EmitFilterValuesService} from '../../emit-filter-values.service';
 
 @Component({
   selector: 'app-filter-checkbox',
@@ -13,11 +14,15 @@ export class FilterCheckboxComponent implements OnInit {
   @Input() filterMap;
   @Input() filterPriceMap;
   selectedfilterValues = [];
-  @Output() emitSelectedfilterValues: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+
+  constructor(private emitFilterValuesService: EmitFilterValuesService) {
+  }
 
   ngOnInit() {
-    console.log(this.filterValues);
+    this.emitFilterValuesService.emitSelectedfilterValues.subscribe((updatedFilterValues) => {
+      this.selectedfilterValues = updatedFilterValues.selectedfilterValues;
+      console.log(this.selectedfilterValues);
+    });
   }
 
   showMore() {
@@ -35,7 +40,10 @@ export class FilterCheckboxComponent implements OnInit {
   }
 
   filter() {
-    this.emitSelectedfilterValues.emit({filterType: this.filterType, selectedfilterValues: this.selectedfilterValues});
+    this.emitFilterValuesService.emitSelectedfilterValues.next({
+      filterType: this.filterType,
+      selectedfilterValues: this.selectedfilterValues
+    });
   }
 
 }

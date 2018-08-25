@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-fare-details',
@@ -9,7 +9,8 @@ export class FareDetailsComponent implements OnInit {
   showBaseExtra = false;
   feeSurchargeExtra = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CreateTripService} from '../flight-list/flight-item/flight-details/itinerary/create-trip.service';
 import {Trip} from '../flight-list/flight-item/flight-details/itinerary/trip.model';
 import {FlightBookingService} from '../flight-booking.service';
@@ -463,9 +463,9 @@ export class BookingDetailsComponent implements OnInit {
       'code': 'VI'
     }];
     this.countryCodes.forEach((countryCode) => {
-        countryCode['label'] = countryCode.dial_code;
-        countryCode['value'] = countryCode.dial_code;
-        this.countryPasspostCode.push({label: countryCode.code, value: countryCode.code});
+      countryCode['label'] = countryCode.dial_code;
+      countryCode['value'] = countryCode.dial_code;
+      this.countryPasspostCode.push({label: countryCode.code, value: countryCode.code});
     });
 
     this.trips = this.createTripService.createTrips(this.flightBookingService.getFlightById(this.route.snapshot.params['id']));

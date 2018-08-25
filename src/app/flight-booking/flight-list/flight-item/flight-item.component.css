@@ -6,8 +6,9 @@
   background-color: white;
   margin-bottom: 15px;
 }
+
 .outer-container:hover {
-  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .airline {
@@ -28,7 +29,7 @@
 }
 
 .time-taken-and-via {
-  width:120px;
+  width: 120px;
 }
 
 .price-and-book {
@@ -65,9 +66,9 @@
 }
 
 /*.price:hover .show-div {*/
-  /*display: block;*/
-  /*position: absolute;*/
-  /*background-color: #eeeeee;*/
+/*display: block;*/
+/*position: absolute;*/
+/*background-color: #eeeeee;*/
 /*}*/
 
 .air-carrier {
@@ -127,8 +128,9 @@ p-button ::ng-deep .ui-button:disabled {
 }
 
 .flight-details-refundable-or-not {
-  cursor:pointer;
+  cursor: pointer;
   color: #333;
+  font-size: 11px;
 }
 
 .flight-details-refundable-or-not:hover {
@@ -137,7 +139,7 @@ p-button ::ng-deep .ui-button:disabled {
 }
 
 .vertical-line {
-  border:1px solid #a2a2a2;
+  border: 1px solid #a2a2a2;
 
 }
 

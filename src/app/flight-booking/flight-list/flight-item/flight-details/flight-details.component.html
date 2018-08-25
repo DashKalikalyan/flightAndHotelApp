@@ -30,10 +30,12 @@
         <div class="content-type">BAGGAGE</div>
       </div>
     </div>
-    <p-button style="padding-right: 12px;" label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [disabled]="disabled"></p-button>
+    <p-button style="padding-right: 12px;" label="Book Now" (onClick)="disabled = !disabled; reviewFlight();"
+              [disabled]="disabled"></p-button>
   </div>
 
-  <app-baggage-rules *ngIf="this.flightDetailsMap.get('baggage')" [flight]="flight" [flightInclusion]="flightInclusion"></app-baggage-rules>
+  <app-baggage-rules *ngIf="this.flightDetailsMap.get('baggage')" [flight]="flight"
+                     [flightInclusion]="flightInclusion"></app-baggage-rules>
   <app-fare-summery-rules *ngIf="this.flightDetailsMap.get('fare-summery')" [flight]="flight"></app-fare-summery-rules>
   <app-itinerary *ngIf="this.flightDetailsMap.get('itinerary')" [flight]="flight"></app-itinerary>
 </div>

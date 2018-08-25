@@ -1,0 +1,65 @@
+.minimum-price-airline {
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+  width: 115px;
+}
+
+.minimum-price-airline:hover {
+  background-color: #e2e2e2;
+  border-top: 2px solid red;
+}
+
+.caret-container {
+  background-color: white;
+  width: 32px;
+  height: 54px;
+  text-align: center;
+}
+
+.align-caret {
+  line-height: 44px;
+}
+
+.inner-caret {
+  margin: 5px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.deactivate-caret-hover {
+  pointer-events: none;
+}
+
+.all-airlines {
+  width: 80px;
+  padding: 15px 10px;
+  height: 21px;
+  border-top: 3px solid white;
+  text-align: center;
+  line-height: 24px;
+  color: #666666;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.all-airlines:hover {
+  background-color: #e2e2e2;
+  border-top: 3px solid red;
+}
+
+.deactivate-caret-hover ::ng-deep i {
+  color: white;
+}
+
+.active-carrier {
+  background-color: #e2e2e2;
+  border-top: 2px solid red;
+}
+
+.all-carriers-active {
+  background-color: #e2e2e2;
+  border-top: 3px solid red;
+}

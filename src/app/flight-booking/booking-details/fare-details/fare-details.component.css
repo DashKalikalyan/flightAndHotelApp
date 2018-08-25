@@ -14,7 +14,7 @@
   border-bottom: 1px solid red;
 }
 
-.base-fare:hover ::ng-deep .base-fare-title{
+.base-fare:hover ::ng-deep .base-fare-title {
   color: red;
 }
 
@@ -26,7 +26,6 @@
 .fee-surcharge:hover ::ng-deep .fee-surcharge-title {
   color: red;
 }
-
 
 .fee-surcharge {
   cursor: pointer;

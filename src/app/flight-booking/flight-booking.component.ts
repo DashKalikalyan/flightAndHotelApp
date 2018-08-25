@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlightBookingService} from './flight-booking.service';
+import {EmitFilterValuesService} from './emit-filter-values.service';
 
 @Component({
   selector: 'app-flight-booking',
@@ -36,9 +37,17 @@ export class FlightBookingComponent implements OnInit {
   perPage = 20;
   pagesToShow = 2;
   filterBy = [];
-  constructor(private flightBookingService: FlightBookingService) { }
+
+  constructor(private flightBookingService: FlightBookingService, private emitFilterValuesService: EmitFilterValuesService) {
+  }
 
   ngOnInit() {
+    this.emitFilterValuesService.emitSelectedfilterValues.subscribe((selectedFilterValues) => {
+      console.log(selectedFilterValues);
+      this.filterObject[selectedFilterValues.filterType] = selectedFilterValues.selectedfilterValues;
+      console.log(this.filterObject);
+      this.filterByFilterObject();
+    });
     this.flights = this.flightBookingService.getFlights();
     this.filteredFlights = this.flights;
     this.sortFlights();
@@ -147,47 +156,38 @@ export class FlightBookingComponent implements OnInit {
     });
   }
 
-
-
-  filter(selectedfilterValues) {
-    console.log(selectedfilterValues);
-    this.filterObject[selectedfilterValues.filterType] = selectedfilterValues.selectedfilterValues;
-    console.log(this.filterObject);
-    this.filterByFilterObject();
-  }
-
   filterByFilterObject() {
-      this.filteredFlights = this.flights.filter((flight) => {
-        if (this.filterObject['carrier']
-          && this.filterObject['carrier'].length > 0
-          && (! this.filterObject['carrier'].includes(flight.carrier))) {
-          return;
-        }
-        if (this.filterObject['fareType']
-          && this.filterObject['fareType'].length > 0
-          && (! this.filterObject['fareType'].includes(flight.fareType))) {
-          return;
-        }
-        if (this.filterObject['alliance']
-          && this.filterObject['alliance'].length > 0
-          && (! this.filterObject['alliance'].includes(flight.alliance))) {
-          return;
-        }
-        if (this.filterObject['stops']
-          && this.filterObject['stops'].length > 0
-          && (! this.filterObject['stops'].includes(flight.layOverDetails.length))) {
-          return;
-        }
-        if (this.filterObject['price']
-          && this.filterObject['price'].length > 0
-          && ( flight.price < this.filterObject['price'][0] || flight.price > this.filterObject['price'][1])) {
-          return;
-        }
-        return flight;
-      });
-      this.currentPage = 1;
-      this.setCurrentPage();
-      console.log(this.filteredFlights.length);
+    this.filteredFlights = this.flights.filter((flight) => {
+      if (this.filterObject['carrier']
+        && this.filterObject['carrier'].length > 0
+        && (!this.filterObject['carrier'].includes(flight.carrier))) {
+        return;
+      }
+      if (this.filterObject['fareType']
+        && this.filterObject['fareType'].length > 0
+        && (!this.filterObject['fareType'].includes(flight.fareType))) {
+        return;
+      }
+      if (this.filterObject['alliance']
+        && this.filterObject['alliance'].length > 0
+        && (!this.filterObject['alliance'].includes(flight.alliance))) {
+        return;
+      }
+      if (this.filterObject['stops']
+        && this.filterObject['stops'].length > 0
+        && (!this.filterObject['stops'].includes(flight.layOverDetails.length))) {
+        return;
+      }
+      if (this.filterObject['price']
+        && this.filterObject['price'].length > 0
+        && (flight.price < this.filterObject['price'][0] || flight.price > this.filterObject['price'][1])) {
+        return;
+      }
+      return flight;
+    });
+    this.currentPage = 1;
+    this.setCurrentPage();
+    console.log(this.filteredFlights.length);
   }
 
   sortFlights() {
@@ -208,7 +208,7 @@ export class FlightBookingComponent implements OnInit {
 
   goToPage(n) {
     if (n === '...') {
-      ++ this.currentPage;
+      ++this.currentPage;
       this.setCurrentPage();
     } else {
       this.currentPage = n;

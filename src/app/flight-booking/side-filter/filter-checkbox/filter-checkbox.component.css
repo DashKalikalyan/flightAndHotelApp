@@ -15,7 +15,7 @@
   padding: 0 0;
 }
 
-.filter-content-name:hover ::ng-deep .only{
+.filter-content-name:hover ::ng-deep .only {
   visibility: visible;
 }
 

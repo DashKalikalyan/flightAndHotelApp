@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {EmitFilterValuesService} from '../emit-filter-values.service';
 
 @Component({
   selector: 'app-side-filter',
@@ -19,14 +20,12 @@ export class SideFilterComponent implements OnInit {
   @Input() fareTypesMap;
   @Input() noOfStopsMap;
   @Input() classesMap;
-  @Input() classesMapPrice;
 
   @Input() carriersMapPrice;
   @Input() alliancesMapPrice;
   @Input() fareTypesMapPrice;
   @Input() noOfStopsMapPrice;
-  @Output() emitSelectedfilterValues: EventEmitter<any> = new EventEmitter();
-  @Output() handlePriceChangeEmitter: EventEmitter<any> = new EventEmitter();
+  @Input() classesMapPrice;
 
   lowerLimit: number;
   higherLimit: number;
@@ -78,11 +77,10 @@ export class SideFilterComponent implements OnInit {
 
   filterArray = [];
 
-  constructor() { }
+  constructor(private emitFilterValuesService: EmitFilterValuesService) {
+  }
 
   ngOnInit() {
-    console.log(this.higherLimit);
-    console.log(this.lowerLimit);
     this.filterArray = [
       {
         filterType: 'fareType',
@@ -120,12 +118,8 @@ export class SideFilterComponent implements OnInit {
     this.rangeValues = [this.lowerLimit, this.higherLimit];
   }
 
-  filter(selectedfilterValues) {
-    this.emitSelectedfilterValues.emit(selectedfilterValues);
-  }
-
   handlePriceChange() {
-    this.handlePriceChangeEmitter.emit({filterType: 'price', selectedfilterValues: this.rangeValues});
+    this.emitFilterValuesService.emitSelectedfilterValues.next({filterType: 'price', selectedfilterValues: this.rangeValues});
   }
 
 }

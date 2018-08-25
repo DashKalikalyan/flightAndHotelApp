@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Trip } from './trip.model';
+import {Component, OnInit, Input} from '@angular/core';
+import {Trip} from './trip.model';
 import {CreateTripService} from './create-trip.service';
 
 @Component({
@@ -11,7 +11,9 @@ export class ItineraryComponent implements OnInit {
   @Input() flight;
 
   trips: Trip[] = [];
-  constructor(private createTripService: CreateTripService) { }
+
+  constructor(private createTripService: CreateTripService) {
+  }
 
   ngOnInit() {
     this.trips = this.createTripService.createTrips(this.flight);
@@ -43,7 +45,7 @@ export class ItineraryComponent implements OnInit {
       class: this.flight.class,
       fareType: this.flight.fareType
     };
-    for (let i = 0; i < this.flight.layOverDetails.length; i++ ) {
+    for (let i = 0; i < this.flight.layOverDetails.length; i++) {
       this.trips[i].arrive = {
         arriveAt: this.flight.layOverDetails[i].via,
         arriveAtCode: this.flight.layOverDetails[i].viaCode,
@@ -52,7 +54,7 @@ export class ItineraryComponent implements OnInit {
         arrivalTime: this.flight.layOverDetails[i].arrivesAtVia
       };
 
-      if (i < this.flight.layOverDetails.length ) {
+      if (i < this.flight.layOverDetails.length) {
         this.trips[i + 1].depart = {
           departFrom: this.flight.layOverDetails[i].via,
           departFromCode: this.flight.layOverDetails[i].viaCode,
@@ -71,7 +73,7 @@ export class ItineraryComponent implements OnInit {
     }
 
     this.trips[this.trips.length - 1].arrive = {
-      arriveAt : this.flight.to,
+      arriveAt: this.flight.to,
       arriveAtCode: this.flight.toCode,
       atAirport: this.flight.arriveAirport,
       atTerminal: this.flight.toTerminal,

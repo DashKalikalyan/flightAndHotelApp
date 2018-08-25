@@ -34,6 +34,7 @@ import { NetBankingComponent } from './payment/net-banking/net-banking.component
 import { DebitCardComponent } from './payment/debit-card/debit-card.component';
 import { CreditCardComponent } from './payment/credit-card/credit-card.component';
 import { PaymentPlanComponent } from './payment/payment-plan/payment-plan.component';
+import { MinimumPriceInAirlineComponent } from './flight-booking/minimum-price-in-airline/minimum-price-in-airline.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'flight-list', pathMatch: 'full' },
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     NetBankingComponent,
     DebitCardComponent,
     CreditCardComponent,
-    PaymentPlanComponent
+    PaymentPlanComponent,
+    MinimumPriceInAirlineComponent
   ],
   imports: [
     BrowserModule,

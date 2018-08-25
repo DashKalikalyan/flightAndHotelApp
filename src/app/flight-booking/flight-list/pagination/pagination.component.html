@@ -1,6 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="center none" fxLayoutGap="10px">
-  <p-button type="button" label="<" class="ui-button-secondary" (onClick)="goPrev()" [ngClass]="{'is-first-page': isFirstPage()}"></p-button>
+  <p-button type="button" label="<" class="ui-button-secondary" (onClick)="goPrev()"
+            [ngClass]="{'is-first-page': isFirstPage()}"></p-button>
   <p-button *ngFor="let el of elements" type="button" [label]="el" class="ui-button-secondary"
             (onClick)="goToPage(el)" [ngClass]="{'active-page': isThisTheActivePage(el)}"></p-button>
-  <p-button type="button" label=">" class="ui-button-secondary" (onClick)="goNext()" [ngClass]="{'is-last-page': isLastPage()}"></p-button>
+  <p-button type="button" label=">" class="ui-button-secondary" (onClick)="goNext()"
+            [ngClass]="{'is-last-page': isLastPage()}"></p-button>
 </div>

@@ -21,6 +21,7 @@
   color: #666;
   font-size: 14px;
 }
+
 .cancel {
   cursor: pointer;
 }
@@ -35,15 +36,15 @@
   background-color: white;
 }
 
-.content-type-container-1:hover ::ng-deep .space{
+.content-type-container-1:hover ::ng-deep .space {
   background-color: red;
 }
 
-.content-type-container-2:hover ::ng-deep .space{
+.content-type-container-2:hover ::ng-deep .space {
   background-color: red;
 }
 
-.content-type-container-3:hover ::ng-deep .space{
+.content-type-container-3:hover ::ng-deep .space {
   background-color: red;
 }
 

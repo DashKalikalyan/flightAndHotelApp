@@ -10,7 +10,9 @@ export class FilterTypeTitleComponent implements OnInit {
   @Input() selectedfilterValues;
   @Input() show;
   @Output() showOrNot = new EventEmitter();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

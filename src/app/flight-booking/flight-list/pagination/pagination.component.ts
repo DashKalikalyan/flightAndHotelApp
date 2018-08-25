@@ -17,7 +17,9 @@ export class PaginationComponent implements OnInit, OnChanges {
   noOfPages;
 
   elements = [];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.setPagination();
@@ -38,9 +40,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   goToPage(pageNumber) {
-      console.log(pageNumber);
-      this.currentPage = pageNumber;
-      this.goToPageEmit.emit(pageNumber);
+    this.currentPage = pageNumber;
+    this.goToPageEmit.emit(pageNumber);
   }
 
   isThisTheActivePage(el) {
@@ -52,7 +53,6 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   isLastPage() {
-    console.log(this.noOfPages);
     return this.currentPage === this.noOfPages;
   }
 
@@ -63,17 +63,10 @@ export class PaginationComponent implements OnInit, OnChanges {
       this.noOfPages = this.totalRecords / this.perPage;
     } else {
       this.noOfPages = Math.ceil(this.totalRecords / this.perPage);
-      console.log(this.noOfPages);
     }
-    console.log('noOfPages to show', this.noOfPages);
     loop = this.noOfPages;
     for (i = 1; i <= loop; i++) {
       this.elements.push(i);
     }
-    console.log(this.totalRecords);
-    console.log(this.perPage);
-    console.log(this.pagesToShow);
-    console.log(this.noOfPages);
-    console.log(this.elements);
   }
 }

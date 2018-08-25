@@ -103,10 +103,13 @@
             <p-calendar [(ngModel)]="value" placeholder="DOB" [maxDate]="currentTime" [monthNavigator]="true"
                         [yearNavigator]="true" yearRange="1970:{{currentTime.getFullYear()}}"></p-calendar>
           </div>
-          <div fxLayout="row" fxLayoutGap="5px" class="optional-passport" (click)="showPassportDetails = !showPassportDetails">
+          <div fxLayout="row" fxLayoutGap="5px" class="optional-passport"
+               (click)="showPassportDetails = !showPassportDetails">
             <div class="optional-passport-title">Optional (Passport)</div>
-            <i class="fa fa-chevron-down" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;" *ngIf="!showPassportDetails"></i>
-            <i class="fa fa-chevron-up" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;" *ngIf="showPassportDetails"></i>
+            <i class="fa fa-chevron-down" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;"
+               *ngIf="!showPassportDetails"></i>
+            <i class="fa fa-chevron-up" aria-hidden="true" style="font-size:12px; padding-top: 3px; color:#666;"
+               *ngIf="showPassportDetails"></i>
           </div>
           <div class="passport-name-date-national" fxLayout="column" fxLayoutGap="10px" *ngIf="showPassportDetails">
             <div style="color: #000000; font-size: 14px;">Passport Details</div>
@@ -124,7 +127,8 @@
         </div>
       </div>
       <div fxLayoutAlign="center none">
-        <p-button label="Proceed To Payment" (onClick)="disabled = !disabled; goToPayment();" [disabled]="disabled"></p-button>
+        <p-button label="Proceed To Payment" (onClick)="disabled = !disabled; goToPayment();"
+                  [disabled]="disabled"></p-button>
       </div>
     </div>
     <app-fare-details></app-fare-details>

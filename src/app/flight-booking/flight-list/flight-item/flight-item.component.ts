@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Router} from '@angular/router';
 
@@ -16,6 +16,7 @@ export class FlightItemComponent implements OnInit {
   showFare = false;
   convenience;
   flightInclusion = [];
+
   constructor(private router: Router) {
   }
 
@@ -32,12 +33,10 @@ export class FlightItemComponent implements OnInit {
         this.flightInclusionMap.set(i, false);
       }
     }
-    console.log(this.flightInclusion);
     this.convenience = this.flight.convenienceAvailable;
   }
 
   presentOrNot(convenience) {
-    console.log(this.convenience);
     return this.convenience.hasOwnProperty(convenience);
   }
 

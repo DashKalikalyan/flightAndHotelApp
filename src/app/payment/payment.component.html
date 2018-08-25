@@ -1,34 +1,39 @@
 <div fxLayoutAlign="center none" class="container" style="padding-top: 25px;">
-    <div fxLayout="row" fxLayoutGap="15px">
-      <div fxLayout="column">
-        <div style="padding: 15px 0;"></div>
-        <div fxLayout="row" style="box-shadow: 1px 4px 11px -1px #c8c8c8;">
-          <div fxLayout="column" class="payment-options-tab">
-            <div class="payment-option" (click)="selectThis('credit-card');" [ngClass]="{'border-of-selected': isItSelected('credit-card')}">Credit Card
-            </div>
-            <div class="payment-option" (click)="selectThis('debit-card')" [ngClass]="{'border-of-selected': isItSelected('debit-card')}">Debit Card</div>
-            <div class="payment-option" (click)="selectThis('net-banking')" [ngClass]="{'border-of-selected': isItSelected('net-banking')}">Net Banking
-            </div>
-            <div class="payment-option">Pay Pal</div>
-            <div class="payment-option">AmazonPay</div>
-            <div class="payment-option">Reward Points</div>
-            <div class="payment-option" (click)="selectThis('mobile-wallet')" [ngClass]="{'border-of-selected': isItSelected('mobile-wallet')}">Mobile
-              Wallet
-            </div>
+  <div fxLayout="row" fxLayoutGap="15px">
+    <div fxLayout="column">
+      <div style="padding: 15px 0;"></div>
+      <div fxLayout="row" style="box-shadow: 1px 4px 11px -1px #c8c8c8;">
+        <div fxLayout="column" class="payment-options-tab">
+          <div class="payment-option" (click)="selectThis('credit-card');"
+               [ngClass]="{'border-of-selected': isItSelected('credit-card')}">Credit Card
           </div>
-          <div class="payment-details-container">
-            <div style="width: 580px;">
-              <app-credit-card *ngIf="this.paymentMethodMap.get('credit-card')"></app-credit-card>
-              <app-debit-card *ngIf="this.paymentMethodMap.get('debit-card')"></app-debit-card>
-              <app-net-banking *ngIf="this.paymentMethodMap.get('net-banking')"></app-net-banking>
-              <app-mobile-wallet *ngIf="this.paymentMethodMap.get('mobile-wallet')"></app-mobile-wallet>
-            </div>
+          <div class="payment-option" (click)="selectThis('debit-card')"
+               [ngClass]="{'border-of-selected': isItSelected('debit-card')}">Debit Card
+          </div>
+          <div class="payment-option" (click)="selectThis('net-banking')"
+               [ngClass]="{'border-of-selected': isItSelected('net-banking')}">Net Banking
+          </div>
+          <div class="payment-option">Pay Pal</div>
+          <div class="payment-option">AmazonPay</div>
+          <div class="payment-option">Reward Points</div>
+          <div class="payment-option" (click)="selectThis('mobile-wallet')"
+               [ngClass]="{'border-of-selected': isItSelected('mobile-wallet')}">Mobile
+            Wallet
+          </div>
+        </div>
+        <div class="payment-details-container">
+          <div style="width: 580px;">
+            <app-credit-card *ngIf="this.paymentMethodMap.get('credit-card')"></app-credit-card>
+            <app-debit-card *ngIf="this.paymentMethodMap.get('debit-card')"></app-debit-card>
+            <app-net-banking *ngIf="this.paymentMethodMap.get('net-banking')"></app-net-banking>
+            <app-mobile-wallet *ngIf="this.paymentMethodMap.get('mobile-wallet')"></app-mobile-wallet>
           </div>
         </div>
       </div>
-      <div>
-        <div style="padding: 15px 0;"></div>
-        <app-fare-details></app-fare-details>
-      </div>
     </div>
+    <div>
+      <div style="padding: 15px 0;"></div>
+      <app-fare-details></app-fare-details>
+    </div>
+  </div>
 </div>

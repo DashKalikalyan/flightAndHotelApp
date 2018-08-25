@@ -14,12 +14,14 @@ export class FlightDetailsComponent implements OnInit {
   disabled = false;
 
   flightDetailsMap = new Map<string, boolean>();
-  constructor(private router: Router) { }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
     this.flightDetailsMap.set('itinerary', false)
-                         .set('baggage', false)
-                         .set('fare-summery', false);
+      .set('baggage', false)
+      .set('fare-summery', false);
     if (this.showFare) {
       this.selectThis('fare-summery');
     } else {

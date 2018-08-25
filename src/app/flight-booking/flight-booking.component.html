@@ -5,12 +5,14 @@
                      [alliances]="alliances" [alliancesMap]="alliancesMap" [fareTypes]="fareTypes"
                      [fareTypesMap]="fareTypesMap" [maxPrice]="maxPrice" [minPrice]="minPrice" [noOfStops]="noOfStops"
                      [noOfStopsMap]="noOfStopsMap" [alliancesMapPrice]="alliancesMapPrice"
-                     [fareTypesMapPrice]="fareTypesMapPrice" [noOfStopsMapPrice]="noOfStopsMapPrice"
-                     (handlePriceChangeEmitter)="filter($event)"
-                     (emitSelectedfilterValues)="filter($event)"></app-side-filter>
-    <app-flight-list [filteredFlights]="filteredFlightsPerPage" [totalRecords]="filteredFlights.length" (goNextEmit)="goNext()" (goPrevEmit)="goPrev()"
-                     (goToPageEmit)="goToPage($event)" [currentPage]="currentPage" [perPage]="perPage"
-                     [pagesToShow]="pagesToShow"></app-flight-list>
-
+                     [fareTypesMapPrice]="fareTypesMapPrice" [noOfStopsMapPrice]="noOfStopsMapPrice"></app-side-filter>
+    <div fxLayout="column" fxLayoutGap="20px">
+      <app-minimum-price-in-airline [carriersMapPrice]="carriersMapPrice" [carriers]="carriers"
+                                    [carriersMap]="carriersMap"></app-minimum-price-in-airline>
+      <app-flight-list [filteredFlights]="filteredFlightsPerPage" [totalRecords]="filteredFlights.length"
+                       (goNextEmit)="goNext()" (goPrevEmit)="goPrev()"
+                       (goToPageEmit)="goToPage($event)" [currentPage]="currentPage" [perPage]="perPage"
+                       [pagesToShow]="pagesToShow"></app-flight-list>
+    </div>
   </div>
 </div>

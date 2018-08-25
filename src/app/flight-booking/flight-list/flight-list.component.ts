@@ -15,7 +15,8 @@ export class FlightListComponent implements OnInit {
   @Output() goPrevEmit: EventEmitter<any> = new EventEmitter();
   @Output() goToPageEmit: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

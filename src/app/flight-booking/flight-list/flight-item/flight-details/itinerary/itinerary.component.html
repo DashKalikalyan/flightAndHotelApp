@@ -5,7 +5,7 @@
         <div fxLayout="row" fxLayoutGap="15px">
           <div><img src="../../../../../../assets/air_india.png" alt="" width="28px" height="28px"></div>
           <div>
-            <div class="airline-name">{{trip.operator.carrier}},  {{trip.operator.name}}</div>
+            <div class="airline-name">{{trip.operator.carrier}}, {{trip.operator.name}}</div>
             <div class="operated-by">Operated by {{trip.operator.carrier}}</div>
           </div>
         </div>
@@ -17,18 +17,27 @@
         <div class="depart-arrive-terminal">{{trip.depart.fromTerminal}}</div>
       </div>
       <div class="other" fxLayout="column" fxLayoutGap="3px">
-        <div style="color: #333; font-size: 12px;"> {{ timeConversion(trip.arrive.arrivalTime - trip.depart.departTime)}} | Non-Stop</div>
+        <div style="color: #333; font-size: 12px;"> {{ timeConversion(trip.arrive.arrivalTime -
+          trip.depart.departTime)}} | Non-Stop
+        </div>
         <div fxLayout="row">
           <div class="round"><i class="fa fa-circle"></i></div>
-          <div><hr style="color: #bebebe; size: 1px; width:65px;"></div>
-          <div style="padding: 0 5px; color: #333;">Flight</div>
-          <div><hr style="color: #bebebe; size: 1px; width: 65px;"></div>
+          <div>
+            <hr style="color: #bebebe; size: 1px; width:65px;">
+          </div>
+          <i class="fa fa-plane" aria-hidden="true" style="padding: 0 5px;"></i>
+          <div>
+            <hr style="color: #bebebe; size: 1px; width: 65px;">
+          </div>
           <div class="round"><i class="fa fa-circle"></i></div>
         </div>
         <div style="color: #333; font-size: 12px;padding: 5px 0;" fxLayout="row" fxLayoutGap="5px">
-          <div>{{trip.operator.class}} Class</div>
+          <div style="font-size: 10px;">{{trip.operator.class}} Class</div>
           <div>|</div>
-          <div class="fare-type" [ngClass]="{'fare-type-refundable': trip.operator.fareType === 'partially-refundable'}">{{flight.fareType}}</div>
+          <div class="fare-type"
+               [ngClass]="{'fare-type-refundable': trip.operator.fareType === 'partially-refundable'}">
+            {{flight.fareType}}
+          </div>
         </div>
       </div>
       <div class="to-place-time" fxLayout="column" fxLayoutGap="5px">
@@ -37,7 +46,14 @@
         <div class="depart-arrive-terminal">{{trip.arrive.atTerminal}}</div>
       </div>
     </div>
-    <div *ngIf="i !== trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span style="font-weight: bold;" >Bangalore (BLR)</span>, Connecting Time: <span style="font-weight: bold;">06h 00m</span> |  Connecting flight may depart from a different terminal</div>
+    <div *ngIf="i !== trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span
+      style="font-weight: bold;">Bangalore (BLR)</span>, Connecting Time: <span
+      style="font-weight: bold;">06h 00m</span> | Connecting flight may depart from a different terminal
+    </div>
   </div>
-  <div style="width: 724px; color: #999; font-size: 12px"><span style="font-weight: bold; color: #333333;">Disclaimer:</span> Passenger of all Nationalities are advised to confirm with respective embassies for all visa requirements.This communication is for informational & general purposes only & Yatra assumes no responsibility,legal or otherwise,of its applicability & accuracy.</div>
+  <div style="width: 724px; color: #999; font-size: 12px"><span
+    style="font-weight: bold; color: #333333;">Disclaimer:</span> Passenger of all Nationalities are advised to confirm
+    with respective embassies for all visa requirements.This communication is for informational & general purposes only
+    & Yatra assumes no responsibility,legal or otherwise,of its applicability & accuracy.
+  </div>
 </div>

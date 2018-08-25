@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-mobile-wallet',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class MobileWalletComponent implements OnInit {
   wallets = [];
   selectedWalletName;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.wallets.push({name: 'freecharge', imagePath: '../../../assets/freecharge.png'});

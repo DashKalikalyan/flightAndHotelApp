@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="price-and-book" fxLayout="row" fxLayoutAlign="space-between none">
-      <div class="price">{{ flight.price }}</div>
+      <div class="price"> &#x24; {{ flight.price }}</div>
       <p-button label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [disabled]="disabled"></p-button>
     </div>
   </div>
@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    <div style="width:270px; padding: 8px;" fxLayout="row" fxLayoutAlign="space-between none">
+    <div style="width:270px; padding: 8px; font-size: 10px;" fxLayout="row" fxLayoutAlign="space-between none">
       <div fxLayout="column" class="convenience tooltip" [ngClass]="{'convenience-present-or-not': presentOrNot('aircraft')}">
         <i class="fa fa-plane" aria-hidden="true" style="text-align: center"></i>
         <div>Aircraft<span class="tooltiptext" *ngIf="presentOrNot('aircraft')">{{convenience.aircraft}}</span></div>

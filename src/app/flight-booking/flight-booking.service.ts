@@ -558,7 +558,7 @@ export class FlightBookingService {
         'entertainment': 'english, hindi, italian'
       },
     }],
-    'price': 621,
+    'price': 205,
     'carrier': 'American',
     'name': 'AI173',
     'convenienceAvailable': {
@@ -765,7 +765,7 @@ export class FlightBookingService {
     'toTerminal': 'T-1',
     'baggage': '5-7 kgs',
     'noOfBaggages': 2
-  },{
+  }, {
     'id': 1,
     'from': 'San Francisco',
     'fromCode': 'SFO',

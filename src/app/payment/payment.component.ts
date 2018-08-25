@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-payment',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
   paymentMethodMap = new Map<string, boolean>();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.paymentMethodMap.set('credit-card', true)

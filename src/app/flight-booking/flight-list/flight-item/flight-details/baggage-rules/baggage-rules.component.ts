@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-baggage-rules',
@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BaggageRulesComponent implements OnInit {
   @Input() flight;
   @Input() flightInclusion;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

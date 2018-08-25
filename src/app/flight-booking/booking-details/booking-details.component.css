@@ -134,8 +134,6 @@ p-dropdown ::ng-deep .ui-dropdown-item {
   font-size: 12px;
 }
 
-
-
 p-dropdown ::ng-deep .ui-dropdown-label {
   padding: 13px;
   font-size: 12px;
@@ -198,10 +196,10 @@ p-dropdown ::ng-deep .ui-dropdown .ui-dropdown-trigger {
 }
 
 p-calendar ::ng-deep .ui-inputtext {
-   height: 40px;
-   width: 160px;
-   font-size: 16px;
- }
+  height: 40px;
+  width: 160px;
+  font-size: 16px;
+}
 
 p-calendar ::ng-deep .ui-widget-content {
   font-size: 14px;
@@ -216,7 +214,7 @@ p-calendar ::ng-deep .ui-widget-content {
   color: #666666;
 }
 
-.optional-passport:hover ::ng-deep .optional-passport-title{
+.optional-passport:hover ::ng-deep .optional-passport-title {
   color: red;
 }
 

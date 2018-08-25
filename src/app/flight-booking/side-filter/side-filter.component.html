@@ -12,11 +12,11 @@
         <div>{{rangeValues[0]}}</div>
         <div>{{rangeValues[1]}}</div>
       </div>
-      <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="minPrice" [max]="maxPrice" (onChange)="handlePriceChange()"></p-slider>
+      <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="minPrice" [max]="maxPrice"
+                (onChange)="handlePriceChange()"></p-slider>
     </div>
   </div>
   <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType"
                        [filterValues]="filterElement.filterValues" [filterMap]="filterElement.filterMap"
-                       [filterPriceMap]="filterElement.filterPriceMap"
-                        (emitSelectedfilterValues)="filter($event)"></app-filter-checkbox>
+                       [filterPriceMap]="filterElement.filterPriceMap"></app-filter-checkbox>
 </div>
