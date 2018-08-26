@@ -27,16 +27,13 @@ export class FlightBookingComponent implements OnInit {
   noOfStopsMapPrice = new Map<number, number>();
   classesMap = new Map<string, number>();
   classesMapPrice = new Map<string, number>();
-  layOversMap = new Map<string, number>();
-  layOversMapPrice = new Map<number, number>();
-  vias = [];
+  sortingMap = new Map<string, string>();
   filterObject = {};
   filteredFlights = [];
   filteredFlightsPerPage = [];
   currentPage = 1;
   perPage = 20;
   pagesToShow = 2;
-  filterBy = [];
 
   constructor(private flightBookingService: FlightBookingService, private emitFilterValuesService: EmitFilterValuesService) {
   }
@@ -48,6 +45,8 @@ export class FlightBookingComponent implements OnInit {
       console.log(this.filterObject);
       this.filterByFilterObject();
     });
+    this.sortingMap.set('airline', 'ascending')
+      .set('price', 'ascending').set('arrival', 'ascending').set('duration', 'ascending');
     this.flights = this.flightBookingService.getFlights();
     this.filteredFlights = this.flights;
     this.sortFlights();
@@ -191,9 +190,71 @@ export class FlightBookingComponent implements OnInit {
   }
 
   sortFlights() {
-    this.filteredFlights.sort((first, second) => {
-      return first.price - second.price;
-    });
+    if (this.sortingMap.get('price') === 'ascending') {
+      this.filteredFlights.sort((first, second) => {
+        return first.price - second.price;
+      });
+      this.sortingMap.set('price', 'descending');
+    } else {
+      this.filteredFlights.sort((first, second) => {
+        return second.price - first.price;
+      });
+      this.sortingMap.set('price', 'ascending');
+    }
+  }
+
+  sortByAirline() {
+    if (this.sortingMap.get('airline') === 'ascending') {
+      this.filteredFlights.sort((first, second) => {
+        if (first.carrier.toLowerCase() < second.carrier.toLowerCase()) {
+          return -1;
+        }
+        if (second.carrier.toLowerCase() < first.carrier.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+      this.sortingMap.set('airline', 'descending');
+    } else {
+      this.filteredFlights.sort((first, second) => {
+        if (first.carrier.toLowerCase() < second.carrier.toLowerCase()) {
+          return 1;
+        }
+        if (second.carrier.toLowerCase() < first.carrier.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
+      this.sortingMap.set('airline', 'ascending');
+    }
+  }
+
+  sortByArrival() {
+    if (this.sortingMap.get('arrival') === 'ascending') {
+      this.filteredFlights.sort((first, second) => {
+        return first.arriveAt - second.arriveAt;
+      });
+      this.sortingMap.set('arrival', 'descending');
+    } else {
+      this.filteredFlights.sort((first, second) => {
+        return second.arriveAt - first.arriveAt;
+      });
+      this.sortingMap.set('arrival', 'ascending');
+    }
+  }
+
+  sortByDuration() {
+    if (this.sortingMap.get('duration') === 'ascending') {
+      this.filteredFlights.sort((first, second) => {
+        return (first.arriveAt - first.departureTime) - (second.arriveAt - second.departureTime);
+      });
+      this.sortingMap.set('duration', 'descending');
+    } else {
+      this.filteredFlights.sort((first, second) => {
+        return (second.arriveAt - second.departureTime) - (first.arriveAt - first.departureTime);
+      });
+      this.sortingMap.set('duration', 'ascending');
+    }
   }
 
   goPrev() {

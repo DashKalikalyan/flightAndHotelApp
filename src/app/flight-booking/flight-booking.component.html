@@ -9,6 +9,12 @@
     <div fxLayout="column" fxLayoutGap="20px">
       <app-minimum-price-in-airline [carriersMapPrice]="carriersMapPrice" [carriers]="carriers"
                                     [carriersMap]="carriersMap"></app-minimum-price-in-airline>
+      <div style="padding: 5px; font-size: 12px; color: #666666;" fxLayout="row">
+        <div style="width: 200px;"><span class="span" (click)="sortByAirline(); this.currentPage = 1; setCurrentPage();">AIRLINE</span></div>
+        <div style="width: 200px;"><span class="span" (click)="sortByArrival(); this.currentPage = 1; setCurrentPage();">ARRIVE</span></div>
+        <div style="width: 160px;"><span class="span" (click)="sortByDuration(); this.currentPage = 1; setCurrentPage();">DURATION</span></div>
+        <div style="width: 194px;"><SPAN class="span" (click)="sortFlights(); this.currentPage = 1; setCurrentPage();">PRICE</SPAN></div>
+      </div>
       <app-flight-list [filteredFlights]="filteredFlightsPerPage" [totalRecords]="filteredFlights.length"
                        (goNextEmit)="goNext()" (goPrevEmit)="goPrev()"
                        (goToPageEmit)="goToPage($event)" [currentPage]="currentPage" [perPage]="perPage"

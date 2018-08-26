@@ -1,1 +1,8 @@
+.span {
+  cursor: pointer;
+}
 
+.span:hover {
+  color: red;
+  border-bottom: 1px solid red;
+}
