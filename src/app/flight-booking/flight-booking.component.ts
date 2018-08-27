@@ -182,6 +182,11 @@ export class FlightBookingComponent implements OnInit {
         && (flight.price < this.filterObject['price'][0] || flight.price > this.filterObject['price'][1])) {
         return;
       }
+      if (this.filterObject['class']
+        && this.filterObject['class'].length > 0
+        && (!this.filterObject['class'].includes(flight.class))) {
+        return;
+      }
       return flight;
     });
     this.currentPage = 1;
