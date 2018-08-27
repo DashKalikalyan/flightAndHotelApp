@@ -1,0 +1,39 @@
+.dropdown-container {
+  padding: 0 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.avatar-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #e2e2e2;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.initials {
+  position: relative;
+  top: 12.5px; /* 25% of parent */
+  font-size: 25px; /* 50% of parent */
+  line-height: 25px; /* 50% of parent */
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.dropdown-option {
+  line-height: 30px;
+  color: #666;
+}
+
+.caret-align {
+  line-height: 30px;
+}
+
+.dropdown-option:hover {
+  border-left: 5px solid #fff;
+  color: black;
+}

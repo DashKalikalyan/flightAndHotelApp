@@ -13,11 +13,11 @@
       </div>
       <div class="from-place-time" fxLayout="column" fxLayoutGap="5px">
         <div class="depart-arrive-terminal">{{trip.depart.departFrom}} ({{trip.depart.departFromCode}})</div>
-        <div class="depart-arrive-time">{{trip.depart.departTime | date: 'EEE, dd MMM, HH:mm'}}</div>
+        <div class="depart-arrive-time">{{trip.depart.departTime | date: 'EEE dd MMM, HH:mm': trip.depart.departFromZone}}</div>
         <div class="depart-arrive-terminal">{{trip.depart.fromTerminal}}</div>
       </div>
       <div class="other" fxLayout="column" fxLayoutGap="3px">
-        <div style="color: #333; font-size: 12px;"> {{ timeConversion(trip.arrive.arrivalTime -
+        <div style="color: #333; font-size: 12px;"> {{timeConversion(trip.arrive.arrivalTime -
           trip.depart.departTime)}} | Non-Stop
         </div>
         <div fxLayout="row">
@@ -42,13 +42,14 @@
       </div>
       <div class="to-place-time" fxLayout="column" fxLayoutGap="5px">
         <div class="depart-arrive-terminal">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</div>
-        <div class="depart-arrive-time">{{trip.arrive.arrivalTime | date: 'EEE, dd MMM, HH:mm'}}</div>
+        <div class="depart-arrive-time">{{trip.arrive.arrivalTime | date: 'EEE dd MMM, HH:mm': trip.arrive.arriveAtZone}}</div>
         <div class="depart-arrive-terminal">{{trip.arrive.atTerminal}}</div>
       </div>
     </div>
-    <div *ngIf="i !== trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span
-      style="font-weight: bold;">Bangalore (BLR)</span>, Connecting Time: <span
-      style="font-weight: bold;">06h 00m</span> | Connecting flight may depart from a different terminal
+    <div *ngIf="i < trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span
+      style="font-weight: bold;">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</span>, Connecting Time: <span
+      style="font-weight: bold;">{{timeConversion(trips[i+1].depart.departTime -
+          trips[i].arrive.arrivalTime)}}</span> | Connecting flight may depart from a different terminal
     </div>
   </div>
   <div style="width: 724px; color: #999; font-size: 12px"><span

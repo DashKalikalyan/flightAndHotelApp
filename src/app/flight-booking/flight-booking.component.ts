@@ -28,6 +28,7 @@ export class FlightBookingComponent implements OnInit {
   classesMap = new Map<string, number>();
   classesMapPrice = new Map<string, number>();
   sortingMap = new Map<string, string>();
+  specialCatagoryMap = new Map<string, boolean>();
   filterObject = {};
   filteredFlights = [];
   filteredFlightsPerPage = [];
@@ -40,7 +41,6 @@ export class FlightBookingComponent implements OnInit {
 
   ngOnInit() {
     this.emitFilterValuesService.emitSelectedfilterValues.subscribe((selectedFilterValues) => {
-      console.log(selectedFilterValues);
       this.filterObject[selectedFilterValues.filterType] = selectedFilterValues.selectedfilterValues;
       console.log(this.filterObject);
       this.filterByFilterObject();
@@ -194,10 +194,16 @@ export class FlightBookingComponent implements OnInit {
       this.filteredFlights.sort((first, second) => {
         return first.price - second.price;
       });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
+      });
       this.sortingMap.set('price', 'descending');
     } else {
       this.filteredFlights.sort((first, second) => {
         return second.price - first.price;
+      });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
       });
       this.sortingMap.set('price', 'ascending');
     }
@@ -214,6 +220,9 @@ export class FlightBookingComponent implements OnInit {
         }
         return 0;
       });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
+      });
       this.sortingMap.set('airline', 'descending');
     } else {
       this.filteredFlights.sort((first, second) => {
@@ -225,6 +234,9 @@ export class FlightBookingComponent implements OnInit {
         }
         return 0;
       });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
+      });
       this.sortingMap.set('airline', 'ascending');
     }
   }
@@ -234,10 +246,16 @@ export class FlightBookingComponent implements OnInit {
       this.filteredFlights.sort((first, second) => {
         return first.arriveAt - second.arriveAt;
       });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
+      });
       this.sortingMap.set('arrival', 'descending');
     } else {
       this.filteredFlights.sort((first, second) => {
         return second.arriveAt - first.arriveAt;
+      });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
       });
       this.sortingMap.set('arrival', 'ascending');
     }
@@ -248,10 +266,16 @@ export class FlightBookingComponent implements OnInit {
       this.filteredFlights.sort((first, second) => {
         return (first.arriveAt - first.departureTime) - (second.arriveAt - second.departureTime);
       });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
+      });
       this.sortingMap.set('duration', 'descending');
     } else {
       this.filteredFlights.sort((first, second) => {
         return (second.arriveAt - second.departureTime) - (first.arriveAt - first.departureTime);
+      });
+      this.sortingMap.forEach((value, key, map) => {
+        map.set(key, 'ascending');
       });
       this.sortingMap.set('duration', 'ascending');
     }

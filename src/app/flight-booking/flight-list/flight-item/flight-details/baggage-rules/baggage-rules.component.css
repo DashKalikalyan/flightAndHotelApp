@@ -2,3 +2,48 @@
   padding: 20px;
   border-top: 1px solid #e2e2e2;
 }
+
+.from-place {
+  font-size: 11px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+}
+
+.from-to-code {
+  font-size: 11px;
+  font-weight: bold;
+  color: #333333;
+  padding: 10px 0;
+}
+
+.from-to-place {
+  padding: 7px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 424px;
+  border-right: 1px solid #ddd;
+}
+
+.check-in-baggage {
+  padding: 7px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 134px;
+}
+
+.cable-baggage{
+  padding: 7px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 134px;
+  border-right: 1px solid #ddd;
+}
+
+.baggage-info {
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  width: 724px;
+  font-size: 12px;
+  color: #999999;
+}

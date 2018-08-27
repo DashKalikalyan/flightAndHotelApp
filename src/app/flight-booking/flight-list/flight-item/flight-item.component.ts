@@ -41,7 +41,7 @@ export class FlightItemComponent implements OnInit {
   }
 
   timeConversion(millisec) {
-    const hours = (millisec / 3600000).toFixed(0);
+    const hours = Math.floor(millisec / 3600000);
     const minutes = ((millisec % 3600000) / 60000).toFixed(0);
     return hours + ' h ' + minutes + ' m';
   }

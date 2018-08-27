@@ -16,7 +16,7 @@
                 (onChange)="handlePriceChange()"></p-slider>
     </div>
   </div>
-  <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType"
+  <app-filter-checkbox *ngFor="let filterElement of filterArray" [filterType]="filterElement.filterType" (emitSelectedValues)="onThis($event)"
                        [filterValues]="filterElement.filterValues" [filterMap]="filterElement.filterMap"
                        [filterPriceMap]="filterElement.filterPriceMap"></app-filter-checkbox>
 </div>

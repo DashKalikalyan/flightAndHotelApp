@@ -2,8 +2,7 @@
   <div class="filter-type-title-name">{{ filterType }}</div>
   <div fxLayout="row" class="hide-show" fxLayoutGap="5px">
     <div class="clear" *ngIf="selectedfilterValues.length !== 0"
-         (click)="selectedfilterValues.length = 0; show = !show; emitShow();">CLEAR
-    </div>
+         (click)="selectedfilterValues.length = 0; show = !show; emitShow();">CLEAR</div>
     <div *ngIf="show">HIDE</div>
     <div *ngIf="!show">SHOW</div>
   </div>

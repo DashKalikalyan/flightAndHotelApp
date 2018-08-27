@@ -21,6 +21,7 @@ export class MinimumPriceInAirlineComponent implements OnInit {
     this.emitFilterValuesService.emitSelectedfilterValues.subscribe((updatedValues) => {
       this.reset();
       if (updatedValues.selectedfilterValues.length === 1) {
+        console.log('called');
         this.selectedCarrier[0] = updatedValues.selectedfilterValues[0];
         this.flightsCarriersMap.set(this.selectedCarrier[0], true);
       }

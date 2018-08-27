@@ -14,14 +14,16 @@ export class FilterCheckboxComponent implements OnInit {
   @Input() filterMap;
   @Input() filterPriceMap;
   selectedfilterValues = [];
+  @Output() emitSelectedValues: EventEmitter<any> = new EventEmitter();
 
   constructor(private emitFilterValuesService: EmitFilterValuesService) {
   }
 
   ngOnInit() {
     this.emitFilterValuesService.emitSelectedfilterValues.subscribe((updatedFilterValues) => {
-      this.selectedfilterValues = updatedFilterValues.selectedfilterValues;
-      console.log(this.selectedfilterValues);
+      if (updatedFilterValues.filterType === this.filterType) {
+        this.selectedfilterValues = updatedFilterValues.selectedfilterValues;
+      }
     });
   }
 
@@ -40,10 +42,17 @@ export class FilterCheckboxComponent implements OnInit {
   }
 
   filter() {
+    console.log ({
+      filterType: this.filterType,
+      selectedfilterValues: this.selectedfilterValues
+    });
+    // this.emitSelectedValues.emit({
+    //   filterType: this.filterType,
+    //   selectedfilterValues: this.selectedfilterValues
+    // });
     this.emitFilterValuesService.emitSelectedfilterValues.next({
       filterType: this.filterType,
       selectedfilterValues: this.selectedfilterValues
     });
   }
-
 }

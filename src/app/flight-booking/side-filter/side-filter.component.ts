@@ -122,5 +122,9 @@ export class SideFilterComponent implements OnInit {
     this.emitFilterValuesService.emitSelectedfilterValues.next({filterType: 'price', selectedfilterValues: this.rangeValues});
   }
 
+  onThis(parameter) {
+    console.log(parameter);
+  }
+
 }
 

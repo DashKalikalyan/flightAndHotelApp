@@ -20,7 +20,8 @@ export class CreateTripService {
       departFromCode: flight.fromCode,
       fromAirport: flight.departAirport,
       fromTerminal: flight.fromTerminal,
-      departTime: flight.departureTime
+      departTime: flight.departureTime,
+      departFromZone: flight.fromZone
     };
     trips[0].operator = {
       carrier: flight.carrier,
@@ -35,7 +36,8 @@ export class CreateTripService {
         arriveAtCode: flight.layOverDetails[i].viaCode,
         atAirport: flight.layOverDetails[i].viaAirport,
         atTerminal: flight.layOverDetails[i].arriveAtTerminal,
-        arrivalTime: flight.layOverDetails[i].arrivesAtVia
+        arrivalTime: flight.layOverDetails[i].arrivesAtVia,
+        arriveAtZone: flight.layOverDetails[i].viaTimeZone
       };
 
       if (i < flight.layOverDetails.length) {
@@ -44,7 +46,8 @@ export class CreateTripService {
           departFromCode: flight.layOverDetails[i].viaCode,
           fromAirport: flight.layOverDetails[i].viaAirport,
           fromTerminal: flight.layOverDetails[i].leavesAtTerminal,
-          departTime: flight.layOverDetails[i].leavesVia
+          departTime: flight.layOverDetails[i].leavesVia,
+          departFromZone: flight.layOverDetails[i].viaTimeZone
         };
         trips[i + 1].operator = {
           carrier: flight.carrier,
@@ -61,7 +64,8 @@ export class CreateTripService {
       arriveAtCode: flight.toCode,
       atAirport: flight.arriveAirport,
       atTerminal: flight.toTerminal,
-      arrivalTime: flight.arriveAt
+      arrivalTime: flight.arriveAt,
+      arriveAtZone: flight.toZone
     };
     return trips;
   }
