@@ -5,6 +5,10 @@
   top: 0;
 }
 
+.filter-type-title-md {
+  display: none;
+}
+
 p-slider ::ng-deep .ui-slider-range {
   background-color: #F34747;
 }

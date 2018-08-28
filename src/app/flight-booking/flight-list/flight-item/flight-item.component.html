@@ -1,13 +1,13 @@
 <div fxLayout="column" class="outer-container">
   <div class="container" fxLayout="row" fxLayoutGap="15px">
-    <div class="airline" [ngClass.sm]="{'airline-sm': true}" fxLayout="row" fxLayoutGap="5px">
+    <div class="airline" [ngClass.xs]="{'airline-xs': true}" [ngClass.sm]="{'airline-sm': true}" fxLayout="row" fxLayoutGap="5px">
       <div>
-        <img src="../../../../assets/air_india.png" alt="Smiley face" width="30" height="30">
+        <img src="../../../../assets/air_india.png" alt="xsiley face" width="30" height="30">
       </div>
       <div class="air-carrier">{{flight.carrier}}</div>
     </div>
-    <div class="schedule-place-time" fxLayout="row" fxLayoutGap="15px">
-      <div class="departure-place-time" [ngClass.sm]="{'departure-place-time-sm': true}" fxLayout="column" fxLayoutGap="2px">
+    <div class="schedule-place-time" fxLayout="row" fxLayoutGap="15px" fxLayout.xs="column" fxLayoutGap.xs="5px">
+      <div class="departure-place-time" [ngClass.xs]="{'departure-place-time-xs': true}" [ngClass.sm]="{'departure-place-time-sm': true}" fxLayout="column" fxLayoutGap="2px" fxLayoutGap.xs="10px" fxLayout.xs="row">
         <div class="time">
           {{flight.departureTime | date:'HH:mm': flight.fromZone}}
         </div>
@@ -15,7 +15,7 @@
           {{flight.from}}
         </div>
       </div>
-      <div class="arrival-place-time" [ngClass.sm]="{'arrival-place-time-sm': true}" fxLayout="column" fxLayoutGap="2px">
+      <div class="arrival-place-time" [ngClass.xs]="{'arrival-place-time-xs': true}" [ngClass.sm]="{'arrival-place-time-sm': true}" fxLayout="column" fxLayoutGap="2px" fxLayoutGap.xs="10px" fxLayout.xs="row">
         <div class="time">
           {{flight.arriveAt | date:'HH:mm': flight.toZone}}
         </div>
@@ -23,24 +23,23 @@
           {{flight.to}}
         </div>
       </div>
-      <div class="time-taken-and-via" [ngClass.sm]="{'time-taken-and-via-sm': true}" fxLayout="column" fxLayoutGap="2px">
+      <div class="time-taken-and-via" [ngClass.xs]="{'time-taken-and-via-xs': true}" [ngClass.sm]="{'time-taken-and-via-sm': true}" fxLayout="column" fxLayoutGap="2px">
         <div class="time-taken">
           {{ timeConversion(flight.arriveAt - flight.departureTime)}}
         </div>
-        <div class="via">
+        <div class="via" [ngClass.sm]="{'via-xs-sm':true}" [ngClass.xs]="{'via-xs-sm':true}">
           {{flight.layOverDetails.length}} Stop(s), via {{flight.layOverDetails[0].via}}
         </div>
       </div>
     </div>
-    <div class="price-and-book" [ngClass.sm]="{'price-and-book-sm': true}" fxLayout="row" fxLayoutAlign="space-between none" fxLayout.sm="column" fxLayoutAlign.sm="start none">
-      <div class="price" [ngClass.sm]="{'price-sm': true}"> &#x24;{{ flight.price }}</div>
-      <p-button label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [ngClass.sm]="{'button-sm': true}" [disabled]="disabled"></p-button>
+    <div class="price-and-book" [ngClass.xs]="{'price-and-book-xs': true}" [ngClass.sm]="{'price-and-book-sm': true}" fxLayout="row" fxLayoutAlign="space-between none" fxLayout.xs="column" fxLayoutAlign.xs="start none">
+      <div class="price" [ngClass.xs]="{'price-xs': true}" [ngClass.sm]="{'price-sm': true}"> &#x24;{{ flight.price }}</div>
+      <p-button label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [ngClass.xs]="{'button-xs': true}" [ngClass.sm]="{'button-sm': true}" [disabled]="disabled"></p-button>
     </div>
   </div>
-
-  <div style="padding: 5px 10px; border-top: 1px solid #e4e4e4;" fxLayout="row" fxLayout.sm="column">
-    <div style="width:230px;" fxLayout="column" fxLayout.sm="row" fxLayoutGap.sm="10px" [ngStyle.sm]="{'width': '470px'}">
-      <div style="font-size: 11px;" [ngStyle.sm]="{'line-height': '25px'}">Flight Inclusions</div>
+  <div style="padding: 5px 10px; border-top: 1px solid #e4e4e4;" fxLayout="row" fxLayout.xs="column">
+    <div style="width:230px;" fxLayout="column" fxLayout.xs="row" fxLayoutGap.xs="10px" [ngStyle.xs]="{'width': '350px'}">
+      <div style="font-size: 11px;" [ngStyle.xs]="{'line-height': '25px'}">Flight Inclusions</div>
       <div fxLayout="row">
         <div style="padding: 4px 0;" *ngFor="let el of flightInclusion; let i = index;">
           <div *ngIf="i >= 0 && i <= flightInclusion.length - 2" fxLayout="row">
@@ -49,36 +48,36 @@
               {{flightInclusion[i].code}} - {{flightInclusion[i+1].code}}
             </div>
             <div style="padding: 3px; color: #999; font-size: 10px" *ngIf="i !== flightInclusion.length -2">
-               -
+                   -
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div style="width:270px; padding: 8px; font-size: 10px;" [ngStyle.sm]="{'padding':'0', 'padding-bottom': '5px'}" fxLayout="row" fxLayoutAlign="space-between none">
-      <div fxLayout="column" class="convenience tooltip" fxLayout.sm="row" fxLayoutGap.sm="5px"
+    <div style="width:270px; padding: 8px; font-size: 10px;" [ngStyle.xs]="{'padding':'0', 'padding-bottom': '4px'}" fxLayout="row" fxLayoutAlign="space-between none" [ngStyle.sm]="{'width': '109px'}">
+      <div fxLayout="column" class="convenience tooltip" fxLayout.xs="row" fxLayoutGap.xs="5px"
            [ngClass]="{'convenience-present-or-not': presentOrNot('aircraft')}">
-        <i class="fa fa-plane" aria-hidden="true" style="text-align: center"></i>
-        <div>Aircraft<span class="tooltiptext" *ngIf="presentOrNot('aircraft')">{{convenience.aircraft}}</span></div>
+        <i class="fa fa-plane" aria-hidden="true" style="text-align: center" [ngStyle.sm]="{'line-height': '23px'}"></i>
+        <div [ngStyle.sm]="{'display': 'none'}">Aircraft<span class="tooltiptext" *ngIf="presentOrNot('aircraft')">{{convenience.aircraft}}</span></div>
       </div>
-      <div fxLayout="column" class="convenience tooltip" fxLayout.sm="row" fxLayoutGap.sm="5px"
+      <div fxLayout="column" class="convenience tooltip" fxLayout.xs="row" fxLayoutGap.xs="5px"
            [ngClass]="{'convenience-present-or-not': presentOrNot('meal')}">
-        <i class="fa fa-cutlery" aria-hidden="true" style="text-align: center"></i>
-        <div>Meal <span class="tooltiptext" *ngIf="presentOrNot('meal')">{{convenience.meal}}</span></div>
+        <i class="fa fa-cutlery" aria-hidden="true" style="text-align: center" [ngStyle.sm]="{'line-height': '23px'}"></i>
+        <div [ngStyle.sm]="{'display': 'none'}">Meal <span class="tooltiptext" *ngIf="presentOrNot('meal')">{{convenience.meal}}</span></div>
       </div>
-      <div fxLayout="column" class="convenience tooltip" fxLayout.sm="row" fxLayoutGap.sm="5px"
+      <div fxLayout="column" class="convenience tooltip" fxLayout.xs="row" fxLayoutGap.xs="5px"
            [ngClass]="{'convenience-present-or-not': presentOrNot('internet')}">
-        <i class="fa fa-wifi" aria-hidden="true" style="text-align: center"></i>
-        <div>Internet<span class="tooltiptext" *ngIf="presentOrNot('internet')">{{convenience.internet}}</span></div>
+        <i class="fa fa-wifi" aria-hidden="true" style="text-align: center" [ngStyle.sm]="{'line-height': '23px'}"></i>
+        <div [ngStyle.sm]="{'display': 'none'}">Internet<span class="tooltiptext" *ngIf="presentOrNot('internet')">{{convenience.internet}}</span></div>
       </div>
-      <div fxLayout="column" class="convenience tooltip" fxLayout.sm="row" fxLayoutGap.sm="5px"
+      <div fxLayout="column" class="convenience tooltip" fxLayout.xs="row" fxLayoutGap.xs="5px"
            [ngClass]="{'convenience-present-or-not': presentOrNot('entertainment')}">
-        <i class="fa fa-youtube-play" aria-hidden="true" style="text-align: center"></i>
-        <div>Entertainment<span class="tooltiptext"
+        <i class="fa fa-youtube-play" aria-hidden="true" style="text-align: center" [ngStyle.sm]="{'line-height': '23px'}"></i>
+        <div [ngStyle.sm]="{'display': 'none'}">Entertainment<span class="tooltiptext"
                                 *ngIf="presentOrNot('entertainment')">{{convenience.entertainment}}</span></div>
       </div>
     </div>
-    <div class="flight-detail-and-partial-refund-and-ecash" fxLayout="row-reverse" fxLayout.sm="row" [ngClass.sm]="{'flight-detail-and-partial-refund-and-ecash-sm':true}" fxLayoutGap="5px">
+    <div class="flight-detail-and-partial-refund-and-ecash" fxLayout="row-reverse" fxLayout.xs="row" [ngClass.xs]="{'flight-detail-and-partial-refund-and-ecash-xs':true}" fxLayoutGap="5px">
       <div class="flight-details-refundable-or-not">e-cash</div>
       <div class="vertical-line"></div>
       <div class="flight-details-refundable-or-not" (click)="showDetails = !showDetails; showFare = false;">Flight

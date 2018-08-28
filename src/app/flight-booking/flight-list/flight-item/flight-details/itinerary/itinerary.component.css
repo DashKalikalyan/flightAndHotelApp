@@ -9,9 +9,30 @@
   width: 212px;
 }
 
+.flight-and-aircraft-sm {
+  width: 172px;
+}
+
+.flight-and-aircraft-xs {
+  width: 334px;
+  border-right: 0;
+}
+
 .from-place-time {
   padding: 5px 15px;
   width: 157px;
+}
+
+.from-place-time-sm {
+  padding: 5px 15px;
+  width: 382px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.from-place-time-xs {
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .other {
@@ -22,6 +43,20 @@
 .to-place-time {
   padding: 5px 0 5px 15px;
   width: 157px;
+}
+
+.to-place-time-sm {
+  padding: 5px 0 5px 15px;
+  width: 382px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.to-place-time-xs {
+  padding: 5px 0 5px 15px;
+  width: 100px;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .airline-name {
@@ -57,8 +92,26 @@
   color: #333;
 }
 
+.depart-arrive-terminal-sm {
+  font-size: 11px;
+}
+
 .depart-arrive-time {
   font-weight: bold;
   font-size: 14px;
   color: #333;
+}
+
+.depart-arrive-time-sm {
+  font-size: 11px;
+}
+
+.depart-arrive-time-xs {
+  font-size: 11px;
+}
+
+.change-plan {
+  text-align: center;
+  color: #333;
+  font-size: 13px;
 }

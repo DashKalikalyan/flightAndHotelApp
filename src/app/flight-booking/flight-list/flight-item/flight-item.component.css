@@ -15,8 +15,13 @@
   width: 180px;
 }
 
-.airline-sm {
+.airline-xs {
   width: 100px;
+  font-size: 12px;
+}
+
+.airline-sm {
+  width: 150px;
   font-size: 12px;
 }
 
@@ -24,7 +29,7 @@
   cursor: pointer;
 }
 
-.schedule-place-time-sm {
+.schedule-place-time-xs {
 
 }
 .departure-place-time {
@@ -32,6 +37,10 @@
   font-size: 14px;
 }
 
+.departure-place-time-xs {
+  width: 140px;
+  font-size: 11px;
+}
 .departure-place-time-sm {
   width: 70px;
   font-size: 11px;
@@ -43,6 +52,11 @@
   font-size: 14px;
 }
 
+.arrival-place-time-xs {
+  width: 140px;
+  font-size: 11px;
+}
+
 .arrival-place-time-sm {
   width: 70px;
   font-size: 11px;
@@ -52,7 +66,12 @@
   width: 120px;
 }
 
-.time-taken-and-via-sm {
+.time-taken-and-via-xs {
+  width: 140px;
+  font-size: 11px;
+}
+
+.time-taken-and-via-xs {
   width: 90px;
   font-size: 11px;
 }
@@ -61,8 +80,12 @@
   width: 200px;
 }
 
-.price-and-book-sm {
+.price-and-book-xs {
   width: 80px;
+}
+
+.price-and-book-sm {
+  width: 100px;
 }
 
 .time {
@@ -83,15 +106,23 @@
   font-size: 12px;
 }
 
+.via-xs-sm {
+  font-size: 9px;
+}
+
 .price {
   font-weight: bold;
   font-size: 20px;
   cursor: pointer;
 }
 
-.price-sm {
+.price-xs {
   font-size: 11px;
   text-align: center;
+}
+
+.price-sm {
+  font-size: 14px;
 }
 
 .show-div {
@@ -104,10 +135,16 @@
 /*background-color: #eeeeee;*/
 /*}*/
 
-.button-sm ::ng-deep .ui-button {
+.button-xs ::ng-deep .ui-button {
   width: 80px;
   height: 20px;
   font-size: 10px;
+}
+
+.button-sm ::ng-deep .ui-button {
+  width: 50px;
+  height: 20px;
+  font-size: 7px;
 }
 
 .air-carrier {
@@ -224,7 +261,7 @@ p-button ::ng-deep .ui-button:disabled {
   padding: 13px 5px;
 }
 
-.flight-detail-and-partial-refund-and-ecash-sm {
+.flight-detail-and-partial-refund-and-ecash-xs {
   padding: 0 0;
-  width: 470px;
+  width: 350px;
 }

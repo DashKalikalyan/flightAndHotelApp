@@ -42,3 +42,14 @@
   padding-left: 10px;
   width: 425px;
 }
+
+.right-sm {
+  padding:0;
+  border-left: 0;
+}
+
+.right-xs {
+  padding:0;
+  border-left: 0;
+  width: 334px;
+}

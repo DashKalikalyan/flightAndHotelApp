@@ -1,7 +1,7 @@
 <div class="itinerary-container" fxLayout="column">
   <div *ngFor="let trip of trips; let i = index;">
-    <div fxLayout="row" style="margin: 20px 0;">
-      <div class="flight-and-aircraft" fxLayout="column" fxLayoutGap="5px">
+    <div fxLayout="row" fxLayout.xs="column" style="margin: 20px 0;">
+      <div class="flight-and-aircraft" fxLayout="column" fxLayoutGap="5px" [ngClass.sm]="{'flight-and-aircraft-sm':true}" [ngClass.xs]="{'flight-and-aircraft-xs':true}">
         <div fxLayout="row" fxLayoutGap="15px">
           <div><img src="../../../../../../assets/air_india.png" alt="" width="28px" height="28px"></div>
           <div>
@@ -11,48 +11,50 @@
         </div>
         <div></div>
       </div>
-      <div class="from-place-time" fxLayout="column" fxLayoutGap="5px">
-        <div class="depart-arrive-terminal">{{trip.depart.departFrom}} ({{trip.depart.departFromCode}})</div>
-        <div class="depart-arrive-time">{{trip.depart.departTime | date: 'EEE dd MMM, HH:mm': trip.depart.departFromZone}}</div>
-        <div class="depart-arrive-terminal">{{trip.depart.fromTerminal}}</div>
-      </div>
-      <div class="other" fxLayout="column" fxLayoutGap="3px">
-        <div style="color: #333; font-size: 12px;"> {{timeConversion(trip.arrive.arrivalTime -
-          trip.depart.departTime)}} | Non-Stop
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="row">
+        <div class="from-place-time" fxLayout="column" fxLayoutGap="5px" [ngClass.sm]="{'from-place-time-sm':true}" [ngClass.xs]="{'from-place-time-xs':true}" fxLayout.sm="row" fxLayout.xs="column" fxLayoutGap.sm="0" fxLayoutGap.xs="0">
+          <div class="depart-arrive-terminal" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}">{{trip.depart.departFrom}} ({{trip.depart.departFromCode}})</div>
+          <div class="depart-arrive-time" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}" [ngClass.sm]="{'depart-arrive-time-sm':true}" [ngClass.xs]="{'depart-arrive-time-xs':true}">{{trip.depart.departTime | date: 'EEE dd MMM, HH:mm': trip.depart.departFromZone}}</div>
+          <div class="depart-arrive-terminal" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}">{{trip.depart.fromTerminal}}</div>
         </div>
-        <div fxLayout="row">
-          <div class="round"><i class="fa fa-circle"></i></div>
-          <div>
-            <hr style="color: #bebebe; size: 1px; width:65px;">
+        <div class="other" fxLayout="column" fxLayoutGap="3px" [ngStyle.sm]="{'display':'none'}" [ngStyle.xs]="{'display':'none'}">
+          <div style="color: #333; font-size: 12px;"> {{timeConversion(trip.arrive.arrivalTime -
+            trip.depart.departTime)}} | Non-Stop
           </div>
-          <i class="fa fa-plane" aria-hidden="true" style="padding: 0 5px;"></i>
-          <div>
-            <hr style="color: #bebebe; size: 1px; width: 65px;">
+          <div fxLayout="row">
+            <div class="round"><i class="fa fa-circle"></i></div>
+            <div>
+              <hr style="color: #bebebe; size: 1px; width:65px;">
+            </div>
+            <i class="fa fa-plane" aria-hidden="true" style="padding: 0 5px;"></i>
+            <div>
+              <hr style="color: #bebebe; size: 1px; width: 65px;">
+            </div>
+            <div class="round"><i class="fa fa-circle"></i></div>
           </div>
-          <div class="round"><i class="fa fa-circle"></i></div>
+          <div style="color: #333; font-size: 12px;padding: 5px 0;" fxLayout="row" fxLayoutGap="5px">
+            <div style="font-size: 10px;">{{trip.operator.class}} Class</div>
+            <div>|</div>
+            <div class="fare-type"
+                 [ngClass]="{'fare-type-refundable': trip.operator.fareType === 'partially-refundable'}">
+              {{flight.fareType}}
+            </div>
+          </div>
         </div>
-        <div style="color: #333; font-size: 12px;padding: 5px 0;" fxLayout="row" fxLayoutGap="5px">
-          <div style="font-size: 10px;">{{trip.operator.class}} Class</div>
-          <div>|</div>
-          <div class="fare-type"
-               [ngClass]="{'fare-type-refundable': trip.operator.fareType === 'partially-refundable'}">
-            {{flight.fareType}}
-          </div>
+        <div class="to-place-time" fxLayout="column" fxLayoutGap="5px" [ngClass.sm]="{'to-place-time-sm':true}" [ngClass.xs]="{'to-place-time-xs':true}" fxLayout.sm="row" fxLayoutGap.sm="0" fxLayout.xs="column" fxLayoutGap.xs="0">
+          <div class="depart-arrive-terminal" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}" >{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</div>
+          <div class="depart-arrive-time" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}" [ngClass.sm]="{'depart-arrive-time-sm':true}" [ngClass.xs]="{'depart-arrive-time-xs':true}">{{trip.arrive.arrivalTime | date: 'EEE dd MMM, HH:mm': trip.arrive.arriveAtZone}}</div>
+          <div class="depart-arrive-terminal" [ngStyle.sm]="{'width': '117px'}" [ngStyle.xs]="{'width': '150px'}">{{trip.arrive.atTerminal}}</div>
         </div>
-      </div>
-      <div class="to-place-time" fxLayout="column" fxLayoutGap="5px">
-        <div class="depart-arrive-terminal">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</div>
-        <div class="depart-arrive-time">{{trip.arrive.arrivalTime | date: 'EEE dd MMM, HH:mm': trip.arrive.arriveAtZone}}</div>
-        <div class="depart-arrive-terminal">{{trip.arrive.atTerminal}}</div>
       </div>
     </div>
-    <div *ngIf="i < trips.length - 1" style="text-align: center; color: #333; font-size: 13px;">Change planes at <span
+    <div *ngIf="i < trips.length - 1" class="change-plan" [ngStyle.sm]="{'width': '554px'}" [ngStyle.xs]="{'width': '334px'}">Change planes at <span
       style="font-weight: bold;">{{trip.arrive.arriveAt}} ({{trip.arrive.arriveAtCode}})</span>, Connecting Time: <span
       style="font-weight: bold;">{{timeConversion(trips[i+1].depart.departTime -
           trips[i].arrive.arrivalTime)}}</span> | Connecting flight may depart from a different terminal
     </div>
   </div>
-  <div style="width: 724px; color: #999; font-size: 12px"><span
+  <div style="width: 724px; color: #999; font-size: 12px" [ngStyle.sm]="{'width': '554px'}" [ngStyle.xs]="{'width': '330px'}"><span
     style="font-weight: bold; color: #333333;">Disclaimer:</span> Passenger of all Nationalities are advised to confirm
     with respective embassies for all visa requirements.This communication is for informational & general purposes only
     & Yatra assumes no responsibility,legal or otherwise,of its applicability & accuracy.

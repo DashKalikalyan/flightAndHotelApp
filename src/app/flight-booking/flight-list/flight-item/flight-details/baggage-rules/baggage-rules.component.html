@@ -10,23 +10,23 @@
       </div>
       <div fxLayout="column">
         <div fxLayout="row" style="background-color: #f7f7f7; border: 1px solid #ddd">
-          <div class="from-to-place">
+          <div class="from-to-place" [ngClass]="{'from-to-place-xs': true}">
             {{flightInclusion[i].place}} - {{flightInclusion[i + 1].place}}
           </div>
-          <div style="width: 134px;" class="cable-baggage">Cable</div>
-          <div class="check-in-baggage">Check-in</div>
+          <div style="width: 134px;" [ngStyle]="{'width': '70px'}" class="cable-baggage">Cable</div>
+          <div class="check-in-baggage" [ngStyle]="{'width': '70px'}">Check-in</div>
         </div>
         <div fxLayout="row"
              style="border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd;">
-          <div style="width: 424px;" class="cable-baggage">Adult</div>
-          <div style="width: 134px;" class="cable-baggage">{{flight.baggage}}</div>
-          <div style="padding: 7px 5px; font-size: 12px; width: 134px;">{{flight.noOfBaggages}}</div>
+          <div style="width: 200px;" class="cable-baggage" [ngStyle]="{'width': '150px'}">Adult</div>
+          <div style="width: 134px;" class="cable-baggage" [ngStyle]="{'width': '70px'}">{{flight.baggage}}</div>
+          <div style="padding: 7px 5px; font-size: 12px; width: 134px;" [ngStyle]="{'width': '70px'}">{{flight.noOfBaggages}}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="baggage-info">
+<div class="baggage-info" [ngStyle]="{'width':'554px'}" [ngStyle.xs]="{'width':'334px'}">
   The baggage information is just for reference. Please check with airline before check-in. For more information , visit
   China Eastern website
   1 piece baggage is equivalent to 23 kgs or 50 lbs for adult/child and 10 kgs or 22 lbs for infants

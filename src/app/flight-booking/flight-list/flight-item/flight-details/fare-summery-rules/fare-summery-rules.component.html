@@ -1,4 +1,4 @@
-<div class="fare-summery-rules-container" fxLayout="row" fxLayoutGap="10px">
+<div class="fare-summery-rules-container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px">
   <div fxLayout="column" fxLayoutGap="10px" class="left">
     <div fxLayout="column" class="fare-table">
       <div class="fare-table-row" fxLayout="row">
@@ -22,7 +22,7 @@
       thus show a slight difference.
     </div>
   </div>
-  <div class="right" fxLayout="column" fxLayoutGap="10px">
+  <div class="right" fxLayout="column" fxLayoutGap="10px" [ngClass.sm]="{'right-sm': true}" [ngClass.xs]="{'right-xs': true}">
     <div fxLayout="column" class="fare-table">
       <div class="fare-table-row" fxLayout="row" style="background-color: #f9f9f9;">
         <div class="fare-type bold" style="width: 340px;">Fare Rules</div>

@@ -30,7 +30,7 @@
         <div class="content-type">BAGGAGE</div>
       </div>
     </div>
-    <p-button style="padding-right: 12px;" label="Book Now" (onClick)="disabled = !disabled; reviewFlight();"
+    <p-button style="padding-right: 12px;" label="Book Now" (onClick)="disabled = !disabled; reviewFlight();" [ngStyle.xs]="{'display':'none'}"
               [disabled]="disabled"></p-button>
   </div>
 
